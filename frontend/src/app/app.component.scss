@@ -1,0 +1,117 @@
+.app-container {
+  background-color: white;
+  border-radius: 60px;
+  padding: 1.5em;
+  height: 100vh;
+
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--app-color-primary-normal);
+    color: var(--app-color-primary-contrast);
+    border-radius: 36px 36px 0 0;
+    padding: 3.25em;
+    font-size: 16px;
+
+
+
+    .app-header-left {
+      padding: 0 1em;
+
+      .app-header-logo {
+        // padding: 2em 0;
+
+        img {
+          // padding-left: 2em;
+        }
+      }
+    }
+
+    .app-header-mid, .app-header-right {
+      display: flex;
+      align-items: center;
+
+      .app-header-items {
+        display: flex;
+        align-items: center;
+        gap: 2em;
+      }
+
+      .app-header-item {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+          border-color: var(--app-color-primary-light);
+        }
+
+        &:focus {
+          border-color: var(--app-color-primary-light);
+        }
+      }
+
+      &.app-header-right {
+        padding: 0 1em;
+        gap: 2em;
+
+        .app-header-item {
+        }
+
+        .app-auth-user {
+
+          .app-auth-username {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+
+  // .app-categories {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // background: radial-gradient(circle, var(--app-color-primary-contrast) 20%, var(--app-color-primary-normal) 60%);
+  //   color: var(--app-color-primary-normal);
+  //   border-bottom: 1px solid var(--app-color-primary-normal);
+  //   font-weight: bold;
+  //   font-size: 18px;
+
+
+  //   .app-categories-items {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     gap: 8px;
+
+  //     .app-categories-item {
+  //       cursor: pointer;
+  //       padding: 1em;
+  //       border-top: 1px solid transparent;
+  //       border-bottom: 1px solid transparent;
+
+  //       &:hover {
+  //        border-color: var(--app-color-primary-normal);
+  //       }
+
+  //       &:active {
+  //         color: var(--app-color-primary-normal);
+
+  //       }
+
+  //       &:focus {
+  //         border-top: 1px solid darkslategray;
+  //         border-bottom: 1px solid darkslategray;
+  //         // color: var(--app-color-secondary-light);
+  //       }
+  //     }
+  //   }
+  // }
+
+
+
+}
