@@ -8,7 +8,7 @@ body {
   margin: 0;
   height: 100%;
   font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
-  background-color: #ebebeb;
+  background-color: var(--app-color-primary-light);
 }
 
 p {

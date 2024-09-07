@@ -13,6 +13,8 @@ export class SignInPage {
   ) { }
 
   login() {
-    this.authService.login();
+    this.authService.login('beacastro', 'secret') .subscribe(res => {
+      console.log(res);
+    });
   }
 }

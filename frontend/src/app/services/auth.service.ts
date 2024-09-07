@@ -1,20 +1,33 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, take } from "rxjs";
+import { User } from "../models/user.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private mUsername = new Subject<string>();
+  private mBaseUrl = `http://localhost:3000/auth`;
+  private mUser = new BehaviorSubject<User>(null);
 
-  get username(): Observable<string> {
-    return this.mUsername.asObservable();
+  get user(): Observable<User> {
+    return this.mUser.asObservable();
   }
 
-  login() {
-    this.mUsername.next('beacastro');
+  get authState(): Observable<User> {
+    return this.user.pipe(
+      take(1)
+    );
+  }
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  login(username: string, password: string) {
+    return this.http.get(`${this.mBaseUrl}?username=${username}&password=${password}`);
   }
 
   logout() {
-    this.mUsername.next('');
+    this.mUser.next(null);
   }
 }

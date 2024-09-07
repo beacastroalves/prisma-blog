@@ -1,0 +1,10 @@
+{
+  "auth": [
+    {
+      "id": 1,
+      "username": "beacastro",
+      "password": "secret",
+      "role": "standard"
+    }
+  ]
+}

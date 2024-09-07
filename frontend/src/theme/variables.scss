@@ -1,19 +1,12 @@
 :root {
-  --app-color-primary-light: #565656;
-  --app-color-primary-normal: #2e4356;
+  --app-color-primary-light: #ebebeb;
   --app-color-primary-normal: #1b75ac;
-  --app-color-primary-shade: #0e2436;
-  --app-color-primary-contrast: #ffffff;
-  // --app-color-secondary-light: #fb9784;
-  --app-color-secondary-light: #e1a487;
-  --app-color-secondary-light-contrast: #000000;
-  // --app-color-secondary-normal: #fb775e;
-  --app-color-secondary-normal: #fe9763;
-  --app-color-secondary-normal-contrast: #ffffff;
-  // --app-color-secondary-shade: #d0614e;
-  --app-color-secondary-shade: #7a5015;
-  --app-color-secondary-shade-contrast: #ffffff;
-  --app-color-gray-light: #ffffff;
+  --app-color-primary-accent: #415678;
+  --app-color-primary-dark: #0e2436;
+  --app-color-dark-contrast: #ffffff;
+  --app-color-light-contrast: #000000;
+  --app-color-text-normal: #565656;
+  --app-color-text-dark: #ffffff00;
 
 // Atention and warnings
   --app-color-sucess: #40eb0c;
@@ -22,12 +15,4 @@
   --app-color-warning-contrast: #000000;
   --app-color-danger: #e54723;
   --app-color-danger-contrast: #ffffff;
-
-  --e-global-color-primary: #415678;
-  --e-global-color-secondary: #000000;
-  --e-global-color-text: #565656;
-  --e-global-color-accent: #415678;
-  --e-global-color-25ee4d8: #FFFFFF;
-  --e-global-color-0205349: #FFFFFF00;
-  --e-global-color-2cf076e: #F2F7FB;
 }

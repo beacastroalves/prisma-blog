@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -16,17 +17,18 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements  OnInit, OnDestroy{
 
-  username: string;
+  user: User;
   subs: Subscription[] = [];
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.subs.push(
-      this.authService.username.subscribe(username => {
-        this.username = username;
+      this.authService.user.subscribe(user => {
+        this.user = user;
       })
     );
   }
@@ -38,6 +40,11 @@ export class AppComponent implements  OnInit, OnDestroy{
   }
 
   logout() {
+    this.router.navigate(['/posts']);
     this.authService.logout();
+  }
+
+  logo() {
+    window.location.href = '/posts';
   }
 }

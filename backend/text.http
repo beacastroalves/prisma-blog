@@ -1,24 +1,12 @@
-@baseUrl = http://localhost:8080
 
-/////////// AUTH ENDPOINT ///////////
-POST {{ baseUrl }}/auth/signIn
-Content-Type: application/json
+POST http://localhost:8080/auth/signIn
 {
-  "username": "brick8717",
+  "username": "beacastro",
   "password": "secret"
 }
 
-POST {{ baseUrl }}/auth/signUp
-Content-Type: application/json
+POST http://localhost:8080/auth/signUp
 {
-  "username": "brick8717",
+  "username": "beacastro",
   "password": "secret"
 }
-
-
-/////////// POST ENDPOINT ///////////
-// fetchAll
-GET {{ baseUrl }}/posts
-
-// fetchById
-
