@@ -1,0 +1,41 @@
+.app-container {
+  height: 100%;
+  // background-color: var(--app-color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+
+
+  .app-card {
+    padding: 2em;
+    border-radius: 16px 16px 8px 8px;
+    border: 1px solid var(--app-color-primary);
+    width: 100%;
+    max-width: 400px ;
+
+    .app-card-header {
+      padding: 1em;
+      .app-card-header-title {
+        font-size: 22px;
+        text-align: center;
+        color: var(--app-color-primary);
+      }
+    }
+
+    .app-card-content {
+      padding: 1em;
+
+      .app-item {
+        padding-bottom: 1em;
+
+        .app-label {
+          padding: 0.25em 0;
+        }
+
+      }
+
+    }
+
+  }
+}

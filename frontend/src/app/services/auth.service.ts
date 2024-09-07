@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, take } from "rxjs";
+import { BehaviorSubject, map, Observable, take } from "rxjs";
 import { User } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
 
@@ -23,8 +23,18 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  login(username: string, password: string) {
-    return this.http.get(`${this.mBaseUrl}?username=${username}&password=${password}`);
+  login(username: string, password: string): Observable<void> {
+    return this.http.get<User[]>(`${this.mBaseUrl}?username=${username}&password=${password}`).pipe(
+      map(users => {
+        if (users.length !== 1) {
+          throw new Error('UserNotFound');
+        }
+
+        const { username, role } = users[0];
+
+        this.mUser.next({ username, role });
+      })
+    );
   }
 
   logout() {

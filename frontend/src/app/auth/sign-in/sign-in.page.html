@@ -1,3 +1,29 @@
-<p>Sign in page works!</p>
+<div class="app-container">
+  <div class="app-card">
+    <div class="app-card-header">
+      <div class="app-card-header-title">BEM VINDO DE VOLTA</div>
 
-<button (click)="login()">Sign In</button>
+    </div>
+    <div class="app-card-content">
+      <form [formGroup]="form">
+        <div class="app-item">
+          <div class="app-label"></div>
+          <div class="app-input">
+            <input type="text" placeholder="Email" formControlName="username">
+          </div>
+        </div>
+        <div class="app-item">
+          <div class="app-label"></div>
+          <div class="app-input">
+            <input type="password" placeholder="Senha" formControlName="password">
+          </div>
+        </div>
+      </form>
+      <div class="pt-2">
+        <button class="btn-primary" [disabled]="form.invalid" (click)="login()">
+          <span class="text">Acessar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

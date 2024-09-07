@@ -40,7 +40,8 @@ export class AppComponent implements  OnInit, OnDestroy{
   }
 
   logout() {
-    this.router.navigate(['/posts']);
+    // this.router.navigate(['/posts']); TALVEZ EU TENHA GOSTADO MAIS DESSA OPÇÃO
+    this.router.navigate(['/auth', 'sign-in']);
     this.authService.logout();
   }
 

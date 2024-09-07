@@ -1,19 +1,20 @@
 .app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: white;
   border-radius: 60px;
   padding: 1.5em;
-  height: 100vh;
+  height: 100%;
 
   .app-header {
     display: flex;
     justify-content: space-between;
-    background-color: var(--app-color-primary-normal);
+    background-color: var(--app-color-primary);
     color: var(--app-color-dark-contrast);
     border-radius: 36px 36px 0 0;
-    padding: 3.4em;
+    padding: 3.4em 2.5em;
     font-size: 16px;
-
-
 
     .app-header-left {
       padding: 0 1em;
@@ -48,11 +49,11 @@
         border-bottom: 1px solid transparent;
 
         &:hover {
-          border-color: var(--app-color-text-normal);
+          border-color: var(--app-color-text);
         }
 
         &:focus {
-          border-color: var(--app-color-text-normal);
+          border-color: var(--app-color-text);
         }
       }
 
@@ -82,12 +83,13 @@
 
 
   /* .app-categories {
+
     display: flex;
     justify-content: center;
     align-items: center;
-    // background: radial-gradient(circle, var(--app-color-primary-contrast) 20%, var(--app-color-primary-normal) 60%);
-    color: var(--app-color-primary-normal);
-    border-bottom: 1px solid var(--app-color-primary-normal);
+    // background: radial-gradient(circle, var(--app-color-primary-contrast) 20%, var(--app-color-primary) 60%);
+    color: var(--app-color-primary);
+    border-bottom: 1px solid var(--app-color-primary);
     font-weight: bold;
     font-size: 18px;
 
@@ -105,22 +107,25 @@
         border-bottom: 1px solid transparent;
 
         &:hover {
-         border-color: var(--app-color-primary-normal);
+         border-color: var(--app-color-primary);
         }
 
         &:active {
-          color: var(--app-color-primary-normal);
+          color: var(--app-color-primary);
 
         }
 
         &:focus {
           border-top: 1px solid darkslategray;
           border-bottom: 1px solid darkslategray;
-          // color: var(--app-color-secondary-light);
         }
       }
     }
    } */
 
+
+  .app-content {
+     height: 100%;
+  }
 
 }

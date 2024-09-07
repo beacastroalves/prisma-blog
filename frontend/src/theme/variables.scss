@@ -1,12 +1,12 @@
 :root {
+  --app-color-primary: #1b75ac;
+  --app-color-primary-shade: #166191;
+  --app-color-primary-dark: #0e405f;
   --app-color-primary-light: #ebebeb;
-  --app-color-primary-normal: #1b75ac;
-  --app-color-primary-accent: #415678;
-  --app-color-primary-dark: #0e2436;
+  --app-color-text: #565656;
+  --app-color-text-dark: #ffffff00;
   --app-color-dark-contrast: #ffffff;
   --app-color-light-contrast: #000000;
-  --app-color-text-normal: #565656;
-  --app-color-text-dark: #ffffff00;
 
 // Atention and warnings
   --app-color-sucess: #40eb0c;
@@ -15,4 +15,5 @@
   --app-color-warning-contrast: #000000;
   --app-color-danger: #e54723;
   --app-color-danger-contrast: #ffffff;
+  //#415678
 }
