@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sing-up/sign-up.module').then(m => m.SignUpPageModule)
+    loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)
   },
 ]
 

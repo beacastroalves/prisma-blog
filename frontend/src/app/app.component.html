@@ -49,7 +49,7 @@
           Hello, <span class="app-auth-username">{{ user.username }}</span>
         </div>
         <div class="app-header-item" (click)="logout()">
-          Logout
+          Sair
         </div>
       } @else {
         <div class="app-header-items">
@@ -57,7 +57,7 @@
             Criar Conta
           </div>
           <div class="app-header-item" routerLink= "auth/sign-in" routerLinkActive="active">
-            Login
+            Entrar
           </div>
         </div>
       }

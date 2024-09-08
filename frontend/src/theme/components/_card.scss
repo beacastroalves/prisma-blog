@@ -1,0 +1,24 @@
+.app-card {
+  padding: 2em;
+  border-radius: 16px 16px 8px 8px;
+  border: 1px solid var(--app-color-primary);
+  width: 100%;
+
+  .app-card-header {
+    padding: 1em;
+
+    .app-card-header-title {
+      font-size: 22px;
+      text-align: center;
+      color: var(--app-color-primary);
+    }
+  }
+
+  .app-card-content {
+    padding: 1em;
+  }
+
+  &.sign {
+      max-width: 400px;
+  }
+}

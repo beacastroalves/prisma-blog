@@ -1,5 +1,10 @@
 @import './theme/variables.scss';
 
+@import './theme/components/card';
+@import './theme/components/form';
+@import './theme/components/button';
+
+
 * {
   box-sizing: border-box;
 }
@@ -9,66 +14,15 @@ body {
   height: 100vh;
   font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
   background-color: var(--app-color-primary-light);
+}
 
-    &:focus {
-      border: 1px solid var(--app-color-primary);
-    }
-  }
-
+h2 {
+  margin: 0;
+ }
 
 p {
+  margin: 0;
   color: var(--app-color-primary);
-}
-
-input, button {
-  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
-  width: 100%;
-  outline: none;
-  background: none;
-  border: 1px solid var(--app-color-primary);
-  border-radius: 2px;
-  padding: 1em;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-
-  &.btn-primary {
-    background-color: var(--app-color-primary);
-    color: var(--app-color-dark-contrast);
-
-    .text {
-      border-top: 1px solid transparent;
-      border-bottom: 1px solid transparent;
-    }
-
-    &:active {
-      background-color: var(--app-color-primary-shade);
-      color: white;
-    }
-
-    &:hover {
-      .text {
-        border-color: var(--app-color-text);
-      }
-    }
-
-    &[disabled] {
-      cursor: not-allowed;
-      // border: 1px solid transparent;
-      background-color: var(--app-color-primary-light);
-      color: var(--app-color-dark-contrast);
-
-      &:hover {
-        .text {
-          border-color: transparent;
-        }
-      }
-    }
-  }
-
-
 }
 
 .pt-2 {

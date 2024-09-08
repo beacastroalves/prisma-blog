@@ -1,0 +1,39 @@
+button {
+  cursor: pointer;
+  border: none;
+
+  &.btn-primary {
+    background-color: var(--app-color-primary);
+    color: var(--app-color-dark-contrast);
+
+    .text {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    &:active {
+      background-color: var(--app-color-primary-shade);
+      color: white;
+    }
+
+    &:hover {
+      .text {
+        border-color: var(--app-color-text);
+      }
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+      background-color: var(--app-color-primary-light);
+      color: var(--app-color-dark-contrast);
+
+      &:hover {
+        .text {
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+
+}

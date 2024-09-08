@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { SignUpPage } from "./sign-up.page";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
   declarations: [SignUpPage],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ]
 })
-export class SignUpPageModule {  }
+export class SignUpPageModule { }

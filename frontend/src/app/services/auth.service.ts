@@ -26,13 +26,24 @@ export class AuthService {
   login(username: string, password: string): Observable<void> {
     return this.http.get<User[]>(`${this.mBaseUrl}?username=${username}&password=${password}`).pipe(
       map(users => {
-        if (users.length !== 1) {
+        if (users.length < 1) {
           throw new Error('UserNotFound');
         }
 
-        const { username, role } = users[0];
+        const { id, username, role } = users[0];
 
-        this.mUser.next({ username, role });
+        this.mUser.next({ id, username, role });
+      })
+    );
+  }
+
+  register(username: string, password: string): Observable<void> {
+    return this.http.post<any>(`${this.mBaseUrl}`, {
+      username, password, role: 'standard'
+    }).pipe(
+      map(res => {
+        const { id, username, role } = res;
+        this.mUser.next({ id, username, role })
       })
     );
   }

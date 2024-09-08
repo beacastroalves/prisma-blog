@@ -1,10 +1,16 @@
 {
   "auth": [
     {
-      "id": 1,
+      "id": "1",
       "username": "beacastro",
       "password": "secret",
       "role": "admin"
+    },
+    {
+      "id": "db7a",
+      "username": "bricked",
+      "password": "secreta",
+      "role": "standard"
     }
   ]
 }
