@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, map, Observable, take } from "rxjs";
+import { BehaviorSubject, map, Observable, switchMap, take } from "rxjs";
 import { User } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
 
@@ -10,7 +10,20 @@ export class AuthService {
   private mUser = new BehaviorSubject<User>(null);
 
   get user(): Observable<User> {
-    return this.mUser.asObservable();
+    return this.mUser.asObservable().pipe(
+      take(1),
+      switchMap(authState => {
+        if (!authState) {
+          const user = JSON.parse(localStorage.getItem('authUser'));
+
+          if (user) {
+            this.mUser.next(user);
+          }
+        }
+
+        return this.mUser.asObservable();
+      })
+    );
   }
 
   get authState(): Observable<User> {
@@ -32,7 +45,9 @@ export class AuthService {
 
         const { id, username, role } = users[0];
 
-        this.mUser.next({ id, username, role });
+        const user: User = { id, username, role };
+        this.mUser.next(user);
+        localStorage.setItem('authUser', JSON.stringify(user));
       })
     );
   }
@@ -43,12 +58,15 @@ export class AuthService {
     }).pipe(
       map(res => {
         const { id, username, role } = res;
-        this.mUser.next({ id, username, role })
+        const user: User = { id, username, role };
+        this.mUser.next(user);
+        localStorage.setItem('authUser', JSON.stringify(user));
       })
     );
   }
 
   logout() {
     this.mUser.next(null);
+    localStorage.removeItem('authUser');
   }
 }

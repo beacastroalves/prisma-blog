@@ -11,6 +11,12 @@
       "username": "bricked",
       "password": "secreta",
       "role": "standard"
+    },
+    {
+      "id": "b371",
+      "username": "beacastro23",
+      "password": "secret",
+      "role": "standard"
     }
   ]
 }
