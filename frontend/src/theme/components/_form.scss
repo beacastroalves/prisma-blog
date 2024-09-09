@@ -1,4 +1,6 @@
-input, button {
+input, button, textarea {
+  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
+  font-size: 14px;
   width: 100%;
   outline: none;
   background: none;
@@ -7,16 +9,19 @@ input, button {
   padding: 1em;
 }
 
+textarea {
+  resize: none;
+}
+
 .app-control {
   height: 68px;
-  // padding-bottom: 1em;
 
   .app-label {
     padding: 0.25em 0;
   }
 
   .app-error {
-    padding-top: 0.25em;
+    padding: 0.25em;
     font-size: 10px;
     color: var(--app-color-danger);
   }

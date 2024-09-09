@@ -1,0 +1,38 @@
+.app-form-container {
+
+  .app-card {
+    height: calc(100vh - 111px - 48px - 40px);
+    max-width: 600px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 0.25em;
+
+      .full-height {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .app-input {
+          height: 100%;
+
+          textarea {
+            height: 100%;
+          }
+        }
+
+        .app-error {
+          // display: none;
+          visibility: hidden;
+
+          &.visible {
+            // display: block;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

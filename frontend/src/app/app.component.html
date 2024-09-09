@@ -9,10 +9,10 @@
       @if (user && user.role === 'admin') {
         <div class="app-header-items">
           <div class="app-header-item" routerLink= "posts" routerLinkActive="active">
-            Posts
+            Blog
           </div>
           <div class="app-header-item" routerLink= "admin/post-form" routerLinkActive="active">
-            Novo Post
+            Nova Publicação
           </div>
           <div class="app-header-item" routerLink= "admin/users" routerLinkActive="active">
             Usuários
@@ -46,7 +46,7 @@
     <div class="app-header-right">
       @if (user) {
         <div class="app-auth-user">
-          Hello, <span class="app-auth-username">{{ user.username }}</span>
+          Olá, <span class="app-auth-username">{{ user.username }}</span>
         </div>
         <div class="app-header-item" (click)="logout()">
           Sair

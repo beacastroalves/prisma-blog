@@ -30,6 +30,14 @@ export class SignInPage implements OnInit {
     });
   }
 
+  hasError(control: string) {
+    return this.form.get(control).invalid && this.form.get(control).touched;
+  }
+
+  getErrorName(control: string) {
+    return this.form.controls[control].errors;
+  }
+
   login() {
     if (this.form.invalid) {
       return;

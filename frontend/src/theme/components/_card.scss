@@ -1,4 +1,6 @@
 .app-card {
+  display: flex;
+  flex-direction: column;
   padding: 2em;
   border-radius: 16px 16px 8px 8px;
   border: 1px solid var(--app-color-primary);
@@ -15,10 +17,13 @@
   }
 
   .app-card-content {
+    flex: 1;
     padding: 1em;
   }
+}
 
-  &.sign {
-      max-width: 400px;
+.app-form-container {
+  .app-card {
+    max-width: 400px;
   }
 }

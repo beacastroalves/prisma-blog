@@ -1,1 +1,44 @@
-<p>Post form works!</p>
+<div class="app-form-container">
+  <div class="app-card">
+    <div class="app-card-header">
+      <div class="app-card-header-title">Nova Publicação</div>
+    </div>
+    <div class="app-card-content">
+      <form [formGroup]="form">
+        <div class="app-control">
+          <div class="app-label"></div>
+          <div class="app-input">
+            <input type="text" placeholder="Título" formControlName="title">
+          </div>
+          <div *ngIf="hasError('title')" class="app-error">
+            <ng-container *ngIf="getErrorName('title')['required']">Campo Obrigatório</ng-container>
+            <ng-container *ngIf="getErrorName('title')['minlength']">Mínimo 10 caracteres</ng-container>
+          </div>
+        </div>
+        <div class="app-control">
+          <div class="app-label"></div>
+          <div class="app-input">
+            <input type="text" placeholder="Imagem">
+          </div>
+          <!-- <div *ngIf="hasError('imagem')" class="app-error">
+            <ng-container *ngIf="getErrorName('username')['required']">Campo Obrigatório</ng-container>
+          </div> -->
+        </div>
+        <div class="app-control full-height">
+          <div class="app-label"></div>
+          <div class="app-input">
+            <textarea placeholder="Descrição" formControlName="description"></textarea>
+          </div>
+          <div class="app-error" [class.visible]="hasError('description')">
+            <ng-container *ngIf="!hasError('description') || !getErrorName('description')['minlength']">Campo Obrigatório</ng-container>
+            <ng-container *ngIf="hasError('description') && getErrorName('description')['minlength']">Mínimo 15 caracteres</ng-container>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="pt-2">
+      <button [disabled]="form.invalid" class="btn-primary" (click)="submit()">Publicar</button>
+    </div>
+  </div>
+</div>

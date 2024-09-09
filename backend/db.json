@@ -17,6 +17,18 @@
       "username": "beacastro23",
       "password": "secret",
       "role": "standard"
+    },
+    {
+      "id": "4c9f",
+      "username": "beacastro023",
+      "password": "secret",
+      "role": "standard"
+    },
+    {
+      "id": "24d9",
+      "username": "beacastro001",
+      "password": "secret",
+      "role": "standard"
     }
   ]
 }

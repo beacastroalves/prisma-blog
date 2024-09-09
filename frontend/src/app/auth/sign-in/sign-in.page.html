@@ -1,5 +1,5 @@
-<div class="app-container">
-  <div class="app-card sign">
+<div class="app-form-container">
+  <div class="app-card">
     <div class="app-card-header">
       <div class="app-card-header-title">BEM VINDO DE VOLTA</div>
     </div>
@@ -10,11 +10,19 @@
           <div class="app-input">
             <input type="text" placeholder="Email" formControlName="username">
           </div>
+          <div *ngIf="hasError('username')" class="app-error">
+            <ng-container *ngIf="getErrorName('username')['required']">Campo Obrigatório</ng-container>
+            <ng-container *ngIf="getErrorName('username')['minlength']">Mínimo 6 caracteres</ng-container>
+          </div>
         </div>
         <div class="app-control">
           <div class="app-label"></div>
           <div class="app-input">
             <input type="password" placeholder="Senha" formControlName="password">
+          </div>
+          <div *ngIf="hasError('password')" class="app-error">
+            <ng-container *ngIf="getErrorName('password')['required']">Campo Obrigatório</ng-container>
+            <ng-container *ngIf="getErrorName('password')['minlength']">Mínimo 6 caracteres</ng-container>
           </div>
         </div>
       </form>
