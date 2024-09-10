@@ -13,7 +13,7 @@ button {
 
     &:active {
       background-color: var(--app-color-primary-shade);
-      color: white;
+
     }
 
     &:hover {
@@ -25,7 +25,6 @@ button {
     &[disabled] {
       cursor: not-allowed;
       background-color: var(--app-color-primary-light);
-      color: var(--app-color-dark-contrast);
 
       &:hover {
         .text {

@@ -1,4 +1,21 @@
 {
+  "posts": [
+    {
+      "id": "0bdf",
+      "title": "Primeiro Teste",
+      "description": "Testando o formulário de uma nova publicação #1"
+    },
+    {
+      "id": "94ca",
+      "title": "Testando Novamente",
+      "description": "Testando uma nova publicação #2"
+    },
+    {
+      "id": "e727",
+      "title": "Testando formulario de nova publicaçao",
+      "description": "Testando uma nova publicação #3 - formulario apagar sozinho depois de apertar botao"
+    }
+  ],
   "auth": [
     {
       "id": "1",

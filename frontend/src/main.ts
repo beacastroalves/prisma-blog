@@ -4,3 +4,8 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
+
+
+export const environment = {
+  apiUrl: 'http://localhost:3000'
+};
