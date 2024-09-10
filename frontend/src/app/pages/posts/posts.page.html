@@ -1,1 +1,14 @@
-<p>{{ value }}</p>
+<div class="app-container">
+  <div class="app-posts">
+    <div *ngFor="let post of posts" class="app-post">
+      <div class="app-post-thumbnail"></div>
+      <div class="app-post-user">
+        <div class="app-post-username">Natercia Sampaio</div>
+        <div class="app-post-separater">-</div>
+        <div class="app-post-date">{{ post.createdAt.toLocaleDateString('pt') }}</div>
+      </div>
+      <div class="app-post-title">{{ post.title }}</div>
+      <div class="app-post-description">{{ post.description }}</div>
+    </div>
+  </div>
+</div>

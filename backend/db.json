@@ -14,6 +14,16 @@
       "id": "e727",
       "title": "Testando formulario de nova publicaçao",
       "description": "Testando uma nova publicação #3 - formulario apagar sozinho depois de apertar botao"
+    },
+    {
+      "id": "501f",
+      "title": "Teste de nova Publicação",
+      "description": "Teste de nova publicação #4"
+    },
+    {
+      "id": "50d9",
+      "title": "Teste para olhar no Banco Fake",
+      "description": "Testando uma publicação no banco fake #5"
     }
   ],
   "auth": [

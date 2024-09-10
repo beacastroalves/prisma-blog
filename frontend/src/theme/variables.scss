@@ -2,11 +2,25 @@
   --app-color-primary: #1b75ac;
   --app-color-primary-shade: #166191;
   --app-color-primary-dark: #0e405f;
-  --app-color-primary-light: #ebebeb;
-  --app-color-text: #565656;
-  --app-color-text-dark: #ffffff00;
-  --app-color-dark-contrast: #ffffff;
-  --app-color-light-contrast: #000000;
+  --app-color-primary-contrast: #ffffff;
+
+  --app-color-light: #ebebeb;
+  --app-color-light-tint: #eeeeee;
+  --app-color-light-shade: #d0d0d0;
+  --app-color-light-constrast: #000000;
+
+  --app-color-medium: #bbbbbb;
+  --app-color-medium-tint: #cccccc;
+  --app-color-medium-shade: #a0a0a0;
+  --app-color-medium-constrast: #000000;
+
+  --app-color-dark: #565656;
+  --app-color-dark-tint: #7e7e7e;
+  --app-color-dark-shade: #3a3a3a;
+  --app-color-medium-constrast: #ffffff;
+
+
+
 
 // Atention and warnings
   --app-color-sucess: #40eb0c;

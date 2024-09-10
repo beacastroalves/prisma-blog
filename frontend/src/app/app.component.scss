@@ -2,16 +2,16 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--app-color-primary-contrast);
   border-radius: 60px;
   padding: 1.5em;
-  height: 100%;
+  height: fit-content;
 
   .app-header {
     display: flex;
     justify-content: space-between;
     background-color: var(--app-color-primary);
-    color: var(--app-color-dark-contrast);
+    color: var(--app-color-primary-contrast);
     border-radius: 36px 36px 0 0;
     padding: 2.5em;
     font-size: 16px;
@@ -49,11 +49,11 @@
         border-bottom: 1px solid transparent;
 
         &:hover {
-          border-color: var(--app-color-text);
+          border-color: var(--app-color-dark);
         }
 
         &:focus {
-          border-color: var(--app-color-text);
+          border-color: var(--app-color-dark);
         }
       }
 
@@ -116,8 +116,8 @@
         }
 
         &:focus {
-          border-top: 1px solid darkslategray;
-          border-bottom: 1px solid darkslategray;
+          border-top: 1px solid var(--app-color-dark);
+          border-bottom: 1px solid var(--app-color-dark);
         }
       }
     }
