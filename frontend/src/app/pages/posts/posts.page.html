@@ -1,7 +1,7 @@
 <div class="app-container">
   <div class="app-posts">
-    <div *ngFor="let post of posts" class="app-post">
-      <div class="app-post-thumbnail"></div>
+    <div *ngFor="let post of posts" class="app-post" (click)="detail(post)">
+      <div class="app-post-thumbnail" [style.background-image]="'url(' + imageUrl + post.id + '.png)'"></div>
       <div class="app-post-user">
         <div class="app-post-username">{{ post.user.username }}</div>
         <div class="app-post-separater">-</div>

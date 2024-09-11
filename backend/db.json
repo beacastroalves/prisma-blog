@@ -29,6 +29,16 @@
       "user": {
         "username": "beacastro"
       }
+    },
+    {
+      "id": "af1c",
+      "createdAt": "2024-09-11T20:04:14.845Z",
+      "updatedAt": "2024-09-11T20:04:14.845Z",
+      "title": "Nova publicação numero #4 ",
+      "description": "Para ver sem imagem mas com um background",
+      "user": {
+        "username": "beacastro"
+      }
     }
   ],
   "auth": [
