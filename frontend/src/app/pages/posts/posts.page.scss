@@ -1,11 +1,7 @@
 .app-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-
   .app-posts {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1em;
     padding: 1em;
 
@@ -59,6 +55,14 @@
           color: var(--app-color-dark);
         }
       }
+    }
+
+    @media (min-width: 760px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 1080px) {
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 }

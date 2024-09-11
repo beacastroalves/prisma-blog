@@ -3,6 +3,7 @@ import { PostsPage } from "./posts.page";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { PostPage } from "./post/post.page";
+import { SharedModule } from "../../shared/shared.Module";
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
   declarations: [PostsPage, PostPage],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class PostsPageModule { }

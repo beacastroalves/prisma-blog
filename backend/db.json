@@ -1,29 +1,34 @@
 {
   "posts": [
     {
-      "id": "0bdf",
-      "title": "Primeiro Teste",
-      "description": "Testando o formulário de uma nova publicação #1"
+      "id": "dc8d",
+      "createdAt": "2024-09-11T18:34:50.629Z",
+      "updatedAt": "2024-09-11T18:34:50.629Z",
+      "title": "Testando o backend fake #1",
+      "description": "Essa eh a descricao do item onde vamos ter agora o backend fake #1",
+      "user": {
+        "username": "beacastro"
+      }
     },
     {
-      "id": "94ca",
-      "title": "Testando Novamente",
-      "description": "Testando uma nova publicação #2"
+      "id": "2b0c",
+      "createdAt": "2024-09-11T19:00:37.616Z",
+      "updatedAt": "2024-09-11T19:00:37.616Z",
+      "title": "Testando uma segunda vez",
+      "description": "Para essa demonstracao vamos novamente #2",
+      "user": {
+        "username": "beacastro"
+      }
     },
     {
-      "id": "e727",
-      "title": "Testando formulario de nova publicaçao",
-      "description": "Testando uma nova publicação #3 - formulario apagar sozinho depois de apertar botao"
-    },
-    {
-      "id": "501f",
-      "title": "Teste de nova Publicação",
-      "description": "Teste de nova publicação #4"
-    },
-    {
-      "id": "50d9",
-      "title": "Teste para olhar no Banco Fake",
-      "description": "Testando uma publicação no banco fake #5"
+      "id": "f852",
+      "createdAt": "2024-09-11T19:06:25.764Z",
+      "updatedAt": "2024-09-11T19:06:25.764Z",
+      "title": "Testando para ficar com o terceiro quadradinho",
+      "description": "Vamos ver como ficam #3 quadradinhos no grid",
+      "user": {
+        "username": "beacastro"
+      }
     }
   ],
   "auth": [
@@ -34,26 +39,8 @@
       "role": "admin"
     },
     {
-      "id": "db7a",
-      "username": "bricked",
-      "password": "secreta",
-      "role": "standard"
-    },
-    {
       "id": "b371",
       "username": "beacastro23",
-      "password": "secret",
-      "role": "standard"
-    },
-    {
-      "id": "4c9f",
-      "username": "beacastro023",
-      "password": "secret",
-      "role": "standard"
-    },
-    {
-      "id": "24d9",
-      "username": "beacastro001",
       "password": "secret",
       "role": "standard"
     }

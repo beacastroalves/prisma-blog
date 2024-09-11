@@ -1,8 +1,13 @@
 import { NgModule } from "@angular/core";
+import { DateFormatPipe } from "./pipes/date-format.pipe";
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DateFormatPipe
+  ],
   imports: [],
-  exports: []
+  exports: [
+    DateFormatPipe
+  ]
 })
 export class SharedModule { }
