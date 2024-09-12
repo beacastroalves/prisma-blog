@@ -1,2 +1,7 @@
-<p>Post with the id: {{ id }}</p>
-<p>Post works</p>
+<div class="app-container">
+  <div *ngIf="post" class="app-post">
+    <div class="app-post-image" [style.background-image]="'url(' + imageUrl + post.id + '.png)'"></div>
+    <div class="app-post-title">{{ post.title }}</div>
+    <div class="app-post-description p-with-padding" [innerHTML]="post.description"></div>
+  </div>
+</div>

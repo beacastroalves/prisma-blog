@@ -23,7 +23,27 @@ export class PostService {
   fetchAll(): Observable<void> {
     return this.http.get<any[]>(`${this.mBaseUrl}`).pipe(
       map(res => {
-        this.mPosts.next(res.map(item => new Post(item)));
+        const posts = res.map(item => {
+          if (item.description.length > 125) {
+            item.description = `${item.description.substr(0, 125).trim()}...`;
+          }
+          return new Post(item)
+        });
+        this.mPosts.next(posts);
+      })
+    );
+  }
+
+  fetchById(id: string): Observable<Post> {
+    return this.http.get<any>(`${this.mBaseUrl}/${id}`).pipe(
+      map(res => {
+        res.description = (res.description as string).split('\n').filter(p => {
+          return p;
+        }).map(p => {
+          return `<p>${p}</p>`;
+        }).join('\n');
+
+        return new Post(res);
       })
     );
   }

@@ -1,0 +1,39 @@
+.app-container {
+  .app-post {
+    width: 100%;
+    margin: auto;
+    padding-top: 3em;
+
+    .app-post-image {
+      height: 400px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .app-post-title {
+      font-family: 'Roboto';
+      font-size: 32px;
+      font-weight: 300;
+      text-transform: uppercase;
+      // color: var(--app-color-primary-shade);
+      color: var(--app-color-secondary);
+      text-decoration: none;
+      padding: 1em 0 0.5em 0;
+    }
+
+    .app-post-description {
+
+      &::ng-deep p {
+        font-size: 18px;
+        padding: 0.5em 0;
+      }
+    }
+
+    @media (min-width: 900px) {
+      width: 70%;
+    }
+  }
+}
+
+
+

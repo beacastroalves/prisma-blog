@@ -19,11 +19,12 @@ body {
 
 h2 {
   margin: 0;
+  color: var(--app-color-dark);
  }
 
 p {
   margin: 0;
-  color: var(--app-color-primary);
+  color: var(--app-color-dark-tint);
 }
 
 .pt-2 {
