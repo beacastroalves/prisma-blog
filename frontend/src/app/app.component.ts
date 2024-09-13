@@ -50,12 +50,12 @@ export class AppComponent implements  OnInit, OnDestroy{
   }
 
   instagram() {
-    // console.log('instagram');
-    window.open('https://instagram.com/naterciasampaio.psi', '_blank');
+    // window.location.reload();
+    window.open('https://duckduckgo.com', '_blank');
   }
 
   whatsapp() {
-    window.open('https://api.whatsapp.com/send/?phone=5585991567902&text&type=phone_number&app_absent=0', '_blank');
-    // console.log('whatsapp');
+    // window.location.reload();
+    window.open('https://google.com', '_blank');
   }
 }
