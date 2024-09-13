@@ -48,4 +48,14 @@ export class AppComponent implements  OnInit, OnDestroy{
   logo() {
     window.location.href = '/posts';
   }
+
+  instagram() {
+    // console.log('instagram');
+    window.open('https://instagram.com/naterciasampaio.psi', '_blank');
+  }
+
+  whatsapp() {
+    window.open('https://api.whatsapp.com/send/?phone=5585991567902&text&type=phone_number&app_absent=0', '_blank');
+    // console.log('whatsapp');
+  }
 }

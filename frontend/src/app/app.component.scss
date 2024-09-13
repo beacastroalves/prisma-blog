@@ -134,4 +134,73 @@
      height: 100%;
   }
 
+  .app-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--app-color-primary);
+    color: var(--app-color-primary-dark);
+    border-radius: 0 0 36px 36px;
+    padding: 6em 4em 3em 4em;
+    font-size: 12px;
+    
+    .app-footer-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 216px;
+    }
+
+    .app-contact-mid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        cursor: pointer;
+        // height: 24px;
+    }
+  }
+
+    .app-footer-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 216px;
+
+      .app-contact-icons {
+        display: flex;
+        gap: 2em;
+        padding-right: 2em 0;
+
+        .app-contact-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 48px;
+          width: 48px;
+          background-color: var(--app-color-primary-contrast);
+          color: var(--app-color-secondary);
+          border-radius: 8px;
+          position: relative;
+          cursor: pointer;
+
+          img {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+          }
+
+          &:hover{
+            background-color: var(--app-color-secondary);
+            transition: 0.5s;
+            // transform: rotate3d(0, 0, 1, 360deg);
+
+           .blue {
+              visibility: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
 }

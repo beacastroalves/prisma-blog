@@ -82,4 +82,25 @@
   <div class="app-content">
     <router-outlet></router-outlet>
   </div>
+  <div class="app-footer">
+    <div class="app-footer-left">
+      <div class="app-contact-policy">Termo de Uso | Política de Privacidade</div>
+      <div class="app-contact-rights">&copy; 2024 Prisma</div>
+    </div>
+    <div class="app-contact-mid" (click)="logo()">
+      <img src="/svg/PrismaFill.svg" >
+    </div>
+    <div class="app-footer-right">
+      <div class="app-contact-icons">
+      <div class="app-contact-icon" (click)="instagram()">
+        <img src="svg/logo-instagram-white.svg" alt="">
+        <img class="blue" src="svg/logo-instagram-blue.svg" alt="">
+      </div>
+      <div class="app-contact-icon" (click)="whatsapp()">
+        <img src="svg/logo-whatsapp-white.svg" alt="">
+        <img class="blue" src="svg/logo-whatsapp-blue.svg" alt="">
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
