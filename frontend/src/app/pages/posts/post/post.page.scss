@@ -21,7 +21,23 @@
       padding: 1em 0 0.5em 0;
     }
 
+    .app-post-user {
+      display: flex;
+      justify-content: space-between;
+      color: var(--app-color-medium);
+      font-size: 16px;
+      padding-bottom: 2em;
+
+      .app-post-username {
+      }
+
+      .app-post-date {
+        text-align: right;
+      }
+    }
+
     .app-post-description {
+      padding-bottom: 3em;
 
       &::ng-deep p {
         font-size: 18px;

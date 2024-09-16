@@ -24,7 +24,7 @@ export class DateFormatPipe implements PipeTransform {
       time = ` às ${hour}:${minutes}`;
     }
 
-   return `${this.lpad(day)}/${this.months[month - 1]}/${year}${time}`;
+   return `${this.lpad(day)} ${this.months[month - 1]} ${year}${time}`;
   }
 
   private lpad(number: number): string {

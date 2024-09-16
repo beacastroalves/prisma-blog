@@ -2,6 +2,10 @@
   <div *ngIf="post" class="app-post">
     <div class="app-post-image" [style.background-image]="'url(' + imageUrl + post.id + '.png)'"></div>
     <div class="app-post-title">{{ post.title }}</div>
+    <div class="app-post-user">
+      <div class="app-post-username">Por <strong>{{ post.user.username }}</strong></div>
+      <div class="app-post-date">Atualizado por útlimo em {{ post.updatedAt | dateFormat }}</div>
+    </div>
     <div class="app-post-description p-with-padding" [innerHTML]="post.description"></div>
   </div>
 </div>
