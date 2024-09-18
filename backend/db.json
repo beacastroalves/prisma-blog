@@ -9,58 +9,7 @@
       "user": {
         "username": "beacastro"
       },
-      "comments": [
-        {
-          "createdAt": "2024-09-11T18:34:50.629Z",
-          "username": "beacastro",
-          "text": "Hello World"
-        },
-        {
-          "createdAt": "2024-09-11T18:43:50.629Z",
-          "username": "beacastro23",
-          "text": "World Hello"
-        },
-        {
-          "createdAt": "2024-09-18T10:57:13.915Z",
-          "username": "beacastro",
-          "text": "Primeiro teste de comentário"
-        },
-        {
-          "createdAt": "2024-09-18T11:41:49.965Z",
-          "username": "beacastro",
-          "text": "Segundo comentário na publicação"
-        },
-        {
-          "createdAt": "2024-09-18T11:49:38.324Z",
-          "username": "beacastro",
-          "text": "quarto teste"
-        },
-        {
-          "createdAt": "2024-09-18T11:49:42.103Z",
-          "username": "beacastro",
-          "text": "quinto teste"
-        },
-        {
-          "createdAt": "2024-09-18T11:50:01.537Z",
-          "username": "beacastro",
-          "text": "olha so isso"
-        },
-        {
-          "createdAt": "2024-09-18T11:50:07.626Z",
-          "username": "beacastro",
-          "text": "ta ficando maior"
-        },
-        {
-          "createdAt": "2024-09-18T12:05:45.896Z",
-          "text": "Um ultimo teste",
-          "username": "beacastro"
-        },
-        {
-          "createdAt": "2024-09-18T12:05:57.794Z",
-          "text": "Parou de crescer",
-          "username": "beacastro"
-        }
-      ]
+      "comments": []
     },
     {
       "createdAt": "2024-09-11T19:00:37.616Z",
@@ -74,30 +23,21 @@
       "comments": [
         {
           "createdAt": "2024-09-18T12:06:31.741Z",
-          "text": "Teste de um novo ",
-          "username": "beacastro"
-        },
-        {
-          "createdAt": "2024-09-18T12:06:44.778Z",
-          "text": "Um segundo comentário aqui nessa publicação",
-          "username": "beacastro"
-        },
-        {
-          "createdAt": "2024-09-18T12:06:55.657Z",
-          "text": "Outro comentario para concluir",
-          "username": "beacastro"
+          "username": "beacastro",
+          "text": "Teste de um novo "
         }
       ]
     },
     {
-      "id": "f852",
       "createdAt": "2024-09-11T19:06:25.764Z",
       "updatedAt": "2024-09-11T19:06:25.764Z",
+      "id": "f852",
       "title": "Marketing e os psicólogos",
-      "description": "O marketing para psicólogos é o conjunto de estratégias e ações que tem como objetivo atrair, captar e fidelizar os clientes potenciais de um serviço de psicologia. O marketing para psicólogos se baseia no conhecimento do mercado, na segmentação do objetivo público, na definição da proposta de valor, na comunicação efetiva e na medição dos resultados.\n\nO marketing para psicólogos não é o mesmo que o marketing tradicional, pois implica uma série de particularidades e desafios específicos.\n\nO conhecimento de marca é uma ferramenta poderosa para psicólogos que desejam estabelecer uma presença sólida e autêntica no campo da saúde mental. Mais do que apenas um logo ou um nome, a marca de um psicólogo é a representação da sua identidade profissional, dos valores que defende e da experiência que oferece aos clientes.\n\nDefinindo a Marca Pessoal: A construção da marca pessoal para um psicólogo começa com a compreensão clara de sua missão, visão e valores. Isso significa refletir sobre os princípios éticos que guiam sua prática, os métodos terapêuticos que utiliza e a mensagem que deseja transmitir ao público.\n\nIdentidade Visual e Comunicação: A identidade visual desempenha um papel crucial na forma como os clientes percebem um psicólogo. Cores, logotipos, tipografia – todos esses elementos contribuem para criar uma imagem que seja atrativa e representativa. No entanto, a comunicação é igualmente vital. Isso engloba desde o tom de voz utilizado em materiais de marketing até a forma como se interage com os pacientes.\n\nConsistência e Autenticidade: Ter consistência é o caminho para construir uma marca forte. Isso significa manter uma mensagem coesa em todos os pontos de contato, desde as redes sociais até as sessões terapêuticas. A autenticidade é outro pilar fundamental. Os pacientes buscam genuinidade e conexão, e uma marca que transparece autenticidade constrói confiança e fidelidade.\n\nEstratégias de Marketing: A marca de um psicólogo se fortalece por meio de estratégias de marketing eficazes. Isso inclui o uso inteligente das redes sociais, a criação de conteúdo relevante e informativo, e a participação ativa em eventos ou grupos profissionais. O networking é uma peça-chave para expandir a visibilidade da marca, permitindo conexões valiosas com colegas e possíveis referências.\n\nConstrução de Credibilidade: Construir credibilidade é essencial. Isso pode ser alcançado através do compartilhamento de conhecimento, seja por meio de blogs informativos, podcasts ou workshops. Ao demonstrar expertise e oferecer insights valiosos, um psicólogo solidifica sua posição como uma autoridade no campo da saúde mental.",
+      "description": "O marketing para psicólogos é o conjunto de estratégias e ações que tem como objetivo atrair, captar e fidelizar os clientes potenciais de um serviço de psicologia. O marketing para psicólogos se baseia no conhecimento do mercado, na segmentação do objetivo público, na definição da proposta de valor, na comunicação efetiva e na medição dos resultados.\nO marketing para psicólogos não é o mesmo que o marketing tradicional, pois implica uma série de particularidades e desafios específicos.\nO conhecimento de marca é uma ferramenta poderosa para psicólogos que desejam estabelecer uma presença sólida e autêntica no campo da saúde mental. Mais do que apenas um logo ou um nome, a marca de um psicólogo é a representação da sua identidade profissional, dos valores que defende e da experiência que oferece aos clientes.\nDefinindo a Marca Pessoal: A construção da marca pessoal para um psicólogo começa com a compreensão clara de sua missão, visão e valores. Isso significa refletir sobre os princípios éticos que guiam sua prática, os métodos terapêuticos que utiliza e a mensagem que deseja transmitir ao público.\nIdentidade Visual e Comunicação: A identidade visual desempenha um papel crucial na forma como os clientes percebem um psicólogo. Cores, logotipos, tipografia – todos esses elementos contribuem para criar uma imagem que seja atrativa e representativa. No entanto, a comunicação é igualmente vital. Isso engloba desde o tom de voz utilizado em materiais de marketing até a forma como se interage com os pacientes.\nConsistência e Autenticidade: Ter consistência é o caminho para construir uma marca forte. Isso significa manter uma mensagem coesa em todos os pontos de contato, desde as redes sociais até as sessões terapêuticas. A autenticidade é outro pilar fundamental. Os pacientes buscam genuinidade e conexão, e uma marca que transparece autenticidade constrói confiança e fidelidade.\nEstratégias de Marketing: A marca de um psicólogo se fortalece por meio de estratégias de marketing eficazes. Isso inclui o uso inteligente das redes sociais, a criação de conteúdo relevante e informativo, e a participação ativa em eventos ou grupos profissionais. O networking é uma peça-chave para expandir a visibilidade da marca, permitindo conexões valiosas com colegas e possíveis referências.\nConstrução de Credibilidade: Construir credibilidade é essencial. Isso pode ser alcançado através do compartilhamento de conhecimento, seja por meio de blogs informativos, podcasts ou workshops. Ao demonstrar expertise e oferecer insights valiosos, um psicólogo solidifica sua posição como uma autoridade no campo da saúde mental.",
       "user": {
         "username": "beacastro"
-      }
+      },
+      "comments": []
     },
     {
       "id": "af1c",

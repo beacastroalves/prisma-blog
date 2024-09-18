@@ -41,9 +41,19 @@
         }
       </div>
       <div class="app-post-comment-items">
-        <div *ngFor="let comment of post.comments" class="app-post-comment-item">
+        <div *ngFor="let comment of post.comments; let i = index" class="app-post-comment-item">
           <div class="app-post-comment-item-header">
-          <div class="app-post-comment-item-header-username">{{ comment.username }}</div>
+            <div class="app-post-comment-item-header-username">
+              <div class="app-post-comment-item-header-username-name">{{ comment.username }}</div>
+              @if (user) {
+                @if (user.username === comment.username) {
+              <div class="app-post-comment-item-header-username-edit" (click)="editComment(i)">Editar</div>
+                }
+                @if (user.username === comment.username || user.role === 'admin') {
+              <div class="app-post-comment-item-header-username-delete" (click)="deleteComment(i)">Deletar</div>
+                }
+              }
+            </div>
           <div class="app-post-comment-item-header-date">{{ comment.createdAt | dateFormat: true}}</div>
         </div>
           <div class="app-post-comment-item-content">{{ comment.text }}</div>

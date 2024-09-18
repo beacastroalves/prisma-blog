@@ -128,15 +128,64 @@
           padding: 1em;
           background-color: var(--app-color-light);
           border-radius: 16px 16px 0 0;
-
+          
           .app-post-comment-item-header {
             display: flex;
             justify-content: space-between;
             padding-bottom: 0.5em;
 
             .app-post-comment-item-header-username {
+              display: flex;
+              gap: 0 24px;
+              align-items: center;
+
+              .app-post-comment-item-header-username-name {
               font-weight: bold;
-             }
+              }
+
+              .app-post-comment-item-header-username-edit {
+                color: var(--app-color-light-shade);
+              }
+
+              .app-post-comment-item-header-username-delete {
+                display: none;
+                color: var(--app-color-danger-shade);
+              }
+              .app-post-comment-item-header-username-edit,
+              .app-post-comment-item-header-username-delete {
+                font-size: 12px;
+                cursor: pointer;
+              }
+            }
+          }
+
+          &:hover {
+            .app-post-comment-item-header {
+              .app-post-comment-item-header-username {
+                .app-post-comment-item-header-username-delete {
+                  display: block;
+
+                  &:hover {
+                    color: var(--app-color-danger);
+                  }
+
+                  &:active {
+                    color: var(--app-color-danger-shade);
+                  }
+                }
+                .app-post-comment-item-header-username-edit {
+                  color: var(--app-color-medium-shade);
+
+                  &:hover {
+                    color: var(--app-color-primary);
+                  }
+
+                  &:active {
+                    color: var(--app-color-primary-shade);
+                  }
+                }
+              }
+            }
           }
         }
       }

@@ -81,9 +81,29 @@ export class PostService {
 
         return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend);
       }),
-      map(res => {
-        console.log(res);
-      })
+      map(() => {})
     );
+  }
+
+  editComment(post: Post, commentIndex: number, text: string): Observable<void> {
+    post.comments[commentIndex].text = text;
+
+    const postToSend = { ...post };
+    postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
+
+    return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
+      map(() => {})
+    )
+  }
+
+  deleteComment(post: Post, commentIndex: number): Observable<void> {
+    post.comments = post.comments.filter((_, i) => i !== commentIndex);
+
+    const postToSend = { ...post };
+    postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
+
+    return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
+      map(() => {})
+    )
   }
 }
