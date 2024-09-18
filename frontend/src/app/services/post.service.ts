@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../main";
-import { BehaviorSubject, Observable, map, switchMap } from "rxjs";
+import { BehaviorSubject, Observable, map, of, switchMap } from "rxjs";
 import { Post } from "../models/post.model";
 import { AuthService } from "./auth.service";
 
@@ -37,6 +37,7 @@ export class PostService {
   fetchById(id: string): Observable<Post> {
     return this.http.get<any>(`${this.mBaseUrl}/${id}`).pipe(
       map(res => {
+        // TODO: remove when real backend gets implemented
         res.description = (res.description as string).split('\n').filter(p => {
           return p;
         }).map(p => {
@@ -61,6 +62,25 @@ export class PostService {
       }
     });
   }),
+      map(res => {
+        console.log(res);
+      })
+    );
+  }
+
+  createComment(post: Post, text: string): Observable<void> {
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        post.comments.push({
+          createdAt: new Date(), text, username: authState.username
+        });
+
+        // TODO: remove when real backend gets implemented
+        const postToSend = { ...post };
+        postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
+
+        return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend);
+      }),
       map(res => {
         console.log(res);
       })

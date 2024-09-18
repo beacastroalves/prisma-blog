@@ -63,24 +63,28 @@
           border: 1px solid transparent;
           border-radius: 16px 0 0 0;
 
-          input {
-            border-left: 1px solid transparent;
-            border-top: 1px solid transparent;
-            border-bottom: 1px solid transparent;
-            border-right: unset;
-            color: var(--app-color-dark);
-            font-size: 18px;
-            padding: 0;
+          form {
             height: 100%;
-            padding: 0 16px;
 
-            &::placeholder {
-              color: var(--app-color-dark-tint);
-            }
+            input {
+              border-left: 1px solid transparent;
+              border-top: 1px solid transparent;
+              border-bottom: 1px solid transparent;
+              border-right: unset;
+              color: var(--app-color-dark);
+              font-size: 18px;
+              padding: 0;
+              height: 100%;
+              padding: 0 16px;
 
-            &:focus {
-              border-color: var(--app-color-primary);
-              border-radius: 16px 0 0 0;
+              &::placeholder {
+                color: var(--app-color-dark-tint);
+              }
+
+              &:focus {
+                border-color: var(--app-color-primary);
+                border-radius: 16px 0 0 0;
+              }
             }
           }
         }

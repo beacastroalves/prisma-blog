@@ -6,6 +6,7 @@ import { environment } from "../../../../main";
 import { AuthService } from "../../../services/auth.service";
 import { Subscription } from "rxjs";
 import { User } from "../../../models/user.model";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-post',
@@ -18,6 +19,8 @@ export class PostPage implements OnInit, OnDestroy {
   user: User;
   post: Post;
   subs: Subscription[] = [];
+
+  commentForm: FormGroup;
 
   constructor(
     private authService: AuthService,
@@ -37,7 +40,14 @@ export class PostPage implements OnInit, OnDestroy {
       this.authService.user.subscribe(user => {
         this.user = user;
       })
-    )
+    );
+
+    this.commentForm = new FormGroup({
+      text: new FormControl(null, {
+        updateOn: 'change',
+        validators: [Validators.required, Validators.minLength(10)]
+      })
+    });
   }
 
   ngOnDestroy(): void {
@@ -45,6 +55,18 @@ export class PostPage implements OnInit, OnDestroy {
       if (sub) {
         sub.unsubscribe();
       }
+    });
+  }
+
+  postComment() {
+    if (this.commentForm.invalid) {
+      return;
+    }
+
+    const { text } = this.commentForm.value;
+
+    this.postService.createComment(this.post, text).subscribe(() => {
+      this.commentForm.reset();
     });
   }
 }
