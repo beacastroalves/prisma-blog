@@ -12,7 +12,7 @@
     </div>
     <div class="app-post-comments">
       <div class="app-post-comment-field" tabindex="0">
-        @if (true) {
+        @if (user) {
           <div class="app-post-comment-input">
             <input type="text" placeholder="Escreva seu cometário aqui">
           </div>
@@ -32,53 +32,12 @@
       </div>
       <div class="app-post-comment-count">10 comentários</div>
       <div class="app-post-comment-items">
-        <div class="app-post-comment-item">
+        <div *ngFor="let comment of post.comments" class="app-post-comment-item">
           <div class="app-post-comment-item-header">
-          <div class="app-post-comment-item-header-username">Joana Salgado</div>
-          <div class="app-post-comment-item-header-date">25 junho 2024</div>
+          <div class="app-post-comment-item-header-username">{{ comment.username }}</div>
+          <div class="app-post-comment-item-header-date">{{ comment.createdAt | dateFormat: true}}</div>
         </div>
-          <div class="app-post-comment-item-content">
-            When writing performance review comments, it’s vital to use positive language.
-            This not only makes the receiver more receptive to your feedback but also helps
-            create an empowering experience. For example, words like “improve,” “achieve,”
-            and “progress” are encouraging and can boost the employee’s motivation.
-          </div>
-        </div>
-        <div class="app-post-comment-item">
-          <div class="app-post-comment-item-header">
-          <div class="app-post-comment-item-header-username">Joana Salgado</div>
-          <div class="app-post-comment-item-header-date">25 junho 2024</div>
-        </div>
-          <div class="app-post-comment-item-content">
-            Instead of saying, “You failed to meet the deadline,” try using a more positive approach: “Although you didn’t meet the deadline, we appreciate your hard work and believe you can do better next time.” This simple change in tone shows that you recognize their effort and are confident in their potential for growth.
-          </div>
-        </div>
-        <div class="app-post-comment-item">
-          <div class="app-post-comment-item-header">
-          <div class="app-post-comment-item-header-username">Joana Salgado</div>
-          <div class="app-post-comment-item-header-date">25 junho 2024</div>
-        </div>
-          <div class="app-post-comment-item-content">
-            When writing performance review comments, it’s vital to use positive language.
-            This not only makes the receiver more receptive to your feedback but also helps
-            create an empowering experience. For example, words like “improve,” “achieve,”
-            When writing performance review comments, it’s vital to use positive language.
-            This not only makes the receiver more receptive to your feedback but also helps
-            create an empowering experience. For example, words like “improve,” “achieve,”
-            When writing performance review comments, it’s vital to use positive language.
-            This not only makes the receiver more receptive to your feedback but also helps
-            create an empowering experience. For example, words like “improve,” “achieve,”
-            and “progress” are encouraging and can boost the employee’s motivation.
-          </div>
-        </div>
-        <div class="app-post-comment-item">
-          <div class="app-post-comment-item-header">
-          <div class="app-post-comment-item-header-username">Joana Salgado</div>
-          <div class="app-post-comment-item-header-date">25 junho 2024</div>
-        </div>
-          <div class="app-post-comment-item-content">
-            When writing performance review comments, it’s vital to use positive language.
-          </div>
+          <div class="app-post-comment-item-content">{{ comment.text }}</div>
         </div>
       </div>
     </div>
