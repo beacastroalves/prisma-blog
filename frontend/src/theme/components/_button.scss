@@ -6,6 +6,21 @@ button {
     background-color: var(--app-color-primary);
     color: var(--app-color-primary-contrast);
 
+    &.btn-outline {
+      background-color: unset;
+      border: 1px solid var(--app-color-primary);
+      color: var(--app-color-primary);
+
+      &:hover {
+        background-color: var(--app-color-primary);
+        color: var(--app-color-primary-contrast);
+      }
+
+      &:active {
+        background-color: var(--app-color-primary-shade);
+      }
+    }
+
     .text {
       border-top: 1px solid transparent;
       border-bottom: 1px solid transparent;
@@ -13,7 +28,6 @@ button {
 
     &:active {
       background-color: var(--app-color-primary-shade);
-
     }
 
     &:hover {

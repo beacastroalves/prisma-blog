@@ -9,7 +9,13 @@
       "user": {
         "username": "beacastro"
       },
-      "comments": []
+      "comments": [
+        {
+          "createdAt": "2024-09-19T10:56:56.607Z",
+          "username": "thederickff",
+          "text": "Olá, te amo"
+        }
+      ]
     },
     {
       "createdAt": "2024-09-11T19:00:37.616Z",
@@ -25,6 +31,11 @@
           "createdAt": "2024-09-18T12:06:31.741Z",
           "username": "beacastro",
           "text": "Teste de um novo "
+        },
+        {
+          "createdAt": "2024-09-19T10:57:35.990Z",
+          "username": "thederickff",
+          "text": "teste de outro usuario"
         }
       ]
     },
@@ -37,7 +48,18 @@
       "user": {
         "username": "beacastro"
       },
-      "comments": []
+      "comments": [
+        {
+          "createdAt": "2024-09-19T15:53:25.938Z",
+          "text": "Primeiro comentário",
+          "username": "beacastro"
+        },
+        {
+          "createdAt": "2024-09-19T15:53:39.322Z",
+          "text": "Segundo comentário",
+          "username": "beacastro"
+        }
+      ]
     },
     {
       "id": "af1c",
@@ -110,6 +132,12 @@
     {
       "id": "b371",
       "username": "beacastro23",
+      "password": "secret",
+      "role": "standard"
+    },
+    {
+      "id": "fd2f",
+      "username": "thederickff",
       "password": "secret",
       "role": "standard"
     }

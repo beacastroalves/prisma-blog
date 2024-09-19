@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+  padding-top: 3em;
+  border-spacing: 0;
+  // border: 1px solid var(--app-color-primary);
+
+  thead {
+    color: var(--app-color-primary);
+    tr {
+      th{
+        border-bottom: 1px solid var(--app-color-primary);
+        border-right: 1px solid var(--app-color-primary);
+        padding: 0.5em;
+      }
+    }
+  }
+  
+  tbody {
+    tr {
+      td {
+        text-align: center;
+        border-right: 1px solid var(--app-color-primary);
+        padding: 0.25em 0;
+        // background-color: var(--app-color-primary-tint);
+      }
+    }
+  }
+}
