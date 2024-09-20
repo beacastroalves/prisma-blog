@@ -3,7 +3,13 @@
     <div class="app-post-image" [style.background-image]="'url(' + imageUrl + post.id + '.png)'"></div>
     <div class="app-post-title">{{ post.title }}</div>
     <div class="app-post-user">
-      <div class="app-post-username">Por <strong>{{ post.user.username }}</strong></div>
+      <div class="app-post-username">
+        <div class="app-post-username-name">Por <strong>{{ post.user.username }}</strong></div>
+        @if (user && user.role === 'admin') {
+          <div class="app-post-username-edit">Editar</div>
+          <div class="app-post-username-delete" (click)="delete()">Apagar Publicação</div>
+        }
+      </div>
       <div class="app-post-date">Atualizado por útlimo em {{ post.updatedAt | dateFormat }}</div>
     </div>
     <div class="app-post-description p-with-padding" [innerHTML]="post.description"></div>
@@ -50,7 +56,7 @@
               <div class="app-post-comment-item-header-username-edit" (click)="editComment(i)">Editar</div>
                 }
                 @if (user.username === comment.username || user.role === 'admin') {
-              <div class="app-post-comment-item-header-username-delete" (click)="deleteComment(i)">Deletar</div>
+              <div class="app-post-comment-item-header-username-delete" (click)="deleteComment(i)">Apagar</div>
                 }
               }
             </div>

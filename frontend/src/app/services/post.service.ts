@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../main";
-import { BehaviorSubject, Observable, map, of, switchMap } from "rxjs";
+import { BehaviorSubject, Observable, map, switchMap } from "rxjs";
 import { Post } from "../models/post.model";
 import { AuthService } from "./auth.service";
 
@@ -66,6 +66,12 @@ export class PostService {
         console.log(res);
       })
     );
+  }
+
+  delete(postId: string): Observable<void> {
+    return this.http.delete(`${this.mBaseUrl}/${postId}`).pipe(
+      map(() => {})
+    )
   }
 
   createComment(post: Post, text: string): Observable<void> {

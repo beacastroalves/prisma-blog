@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { PostService } from "../../../services/post.service";
-import { Post, PostComment } from "../../../models/post.model";
+import { Post } from "../../../models/post.model";
 import { environment } from "../../../../main";
 import { AuthService } from "../../../services/auth.service";
 import { Subscription } from "rxjs";
@@ -25,7 +25,8 @@ export class PostPage implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
 
@@ -58,6 +59,14 @@ export class PostPage implements OnInit, OnDestroy {
     });
   }
 
+  delete() {
+    if (confirm(`Tem certeza que deseja apagar esta publicação?`)) {
+      this.postService.delete(this.post.id).subscribe(() => {
+        this.router.navigate(['/posts']);
+      });
+    }
+  }
+
   postComment() {
     if (this.commentForm.invalid) {
       return;
@@ -83,7 +92,7 @@ export class PostPage implements OnInit, OnDestroy {
 
   deleteComment(commentIndex: number) {
     const comment = this.post.comments[commentIndex];
-    if (confirm(`Tem certeza que deseja deletar o comentário: "${comment.text}" de ${comment.username}?`)) {
+    if (confirm(`Tem certeza que deseja remover o comentário: "${comment.text}" de ${comment.username}?`)) {
       this.postService.deleteComment(this.post, commentIndex).subscribe();
     }
   }

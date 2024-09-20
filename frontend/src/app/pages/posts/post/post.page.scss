@@ -25,12 +25,52 @@
     .app-post-user {
       display: flex;
       justify-content: space-between;
-      color: var(--app-color-medium-shade);
       font-size: 16px;
-      padding-bottom: 2em;
+      color: var(--app-color-medium-shade);
+      padding-bottom: 32px;
 
       .app-post-username {
-      }
+        display: flex;
+        gap: 0 16px;
+        align-items: center;
+
+        .app-post-username-name {
+          padding-right: 1.5em;
+        }
+
+        .app-post-username-edit,
+        .app-post-username-delete {
+          font-size: 12px;
+          cursor: pointer;
+          border-top: 1px solid transparent;
+          border-bottom: 1px solid transparent;
+          color: var(--app-color-light-shade);
+          &:hover {
+            border-color: var(--app-color-dark);
+          }
+        }
+
+        .app-post-username-edit {
+          &:hover {
+            color: var(--app-color-primary);
+          }
+
+          &:active {
+            color: var(--app-color-primary-shade);
+          }
+        }
+
+        .app-post-username-delete {
+          &:hover {
+            color: var(--app-color-danger);
+          }
+
+          &:active {
+            color: var(--app-color-danger-shade);
+          }
+        }
+
+    }
 
       .app-post-date {
         text-align: right;
@@ -128,7 +168,7 @@
           padding: 1em;
           background-color: var(--app-color-light);
           border-radius: 16px 16px 0 0;
-          
+
           .app-post-comment-item-header {
             display: flex;
             justify-content: space-between;
@@ -136,11 +176,12 @@
 
             .app-post-comment-item-header-username {
               display: flex;
-              gap: 0 24px;
+              gap: 0 16px;
               align-items: center;
 
               .app-post-comment-item-header-username-name {
               font-weight: bold;
+              padding-right: 1em;
               }
 
               .app-post-comment-item-header-username-edit {
@@ -155,6 +196,8 @@
               .app-post-comment-item-header-username-delete {
                 font-size: 12px;
                 cursor: pointer;
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid transparent;
               }
             }
           }
@@ -167,6 +210,7 @@
 
                   &:hover {
                     color: var(--app-color-danger);
+                    border-color: var(--app-color-dark);
                   }
 
                   &:active {
@@ -178,6 +222,7 @@
 
                   &:hover {
                     color: var(--app-color-primary);
+                    border-color: var(--app-color-dark);
                   }
 
                   &:active {

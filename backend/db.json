@@ -120,16 +120,6 @@
       "user": {
         "username": "beacastro"
       }
-    },
-    {
-      "id": "75bb",
-      "createdAt": "2024-09-13T10:39:03.300Z",
-      "updatedAt": "2024-09-13T10:39:03.300Z",
-      "title": "A Crise da Meia-Idade",
-      "description": "Popularmente conhecida como a “crise dos 40”, é uma fase comum e significativa na vida de muitos indivíduos.\n\n A princípio, pode parecer apenas uma questão relacionada ao envelhecimento e à passagem do tempo. Contudo, a realidade é muito mais complexa e profunda. \n\nEssa crise é marcada por uma série de questionamentos existenciais, emocionais e psicológicos que, frequentemente, levam as pessoas a reconsiderar suas escolhas de vida, reavaliar metas estabelecidas e até mesmo questionar o próprio propósito.\n\nDurante essa fase, que geralmente ocorre entre os 35 e 50 anos, muitos se deparam com a percepção de que metade da vida já foi vivida, o que pode provocar uma mistura de ansiedade e reflexão. \n\nAs conquistas alcançadas até então podem ser revisadas sob uma nova luz, muitas vezes com uma sensação de urgência para ajustar o rumo antes que seja “tarde demais”. \n\nAlém disso, esse período de transição pode ser agravado por mudanças fisiológicas e sociais, como o envelhecimento dos pais, o crescimento dos filhos e a aposentadoria que se aproxima. \n\nSobretudo, a crise da meia idade não deve ser vista apenas como um obstáculo, mas como uma oportunidade para redescobrir valores, reconstruir relações e redirecionar a vida de acordo com novos objetivos.",
-      "user": {
-        "username": "beacastro"
-      }
     }
   ],
   "auth": [
@@ -139,12 +129,12 @@
       "role": "admin"
     },
     {
-      "id": "b371",
+      "id": "2",
       "username": "beacastro23",
       "role": "standard"
     },
     {
-      "id": "fd2f",
+      "id": "3",
       "username": "thederickff",
       "role": "standard"
     }
