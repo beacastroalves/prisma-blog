@@ -36,6 +36,16 @@
           "createdAt": "2024-09-19T10:57:35.990Z",
           "username": "thederickff",
           "text": "teste de outro usuario"
+        },
+        {
+          "createdAt": "2024-09-20T10:54:27.155Z",
+          "username": "beacastro",
+          "text": "Vou escrever qualquer outra coisa"
+        },
+        {
+          "createdAt": "2024-09-20T10:55:59.874Z",
+          "username": "beacastro23",
+          "text": "Teste de user padrao"
         }
       ]
     },
@@ -126,19 +136,16 @@
     {
       "id": "1",
       "username": "beacastro",
-      "password": "secret",
       "role": "admin"
     },
     {
       "id": "b371",
       "username": "beacastro23",
-      "password": "secret",
       "role": "standard"
     },
     {
       "id": "fd2f",
       "username": "thederickff",
-      "password": "secret",
       "role": "standard"
     }
   ]

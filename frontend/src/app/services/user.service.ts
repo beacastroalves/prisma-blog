@@ -28,16 +28,25 @@ export class UserService {
     )
   }
 
-  makeAdmin(userId: string): Observable<void> {
+  setIsAdmin(userId: string, isAdmin: boolean): Observable<void> {
+    let cUsers: User[];
+
     return this.users.pipe(
       take(1),
       switchMap(users => {
-        const userToUpdate = users.find(user => user.id === userId);
-        userToUpdate.role = 'admin';
+        cUsers = users;
+        const userToUpdateIndex = users.findIndex(user => user.id === userId);
+        
+        if (userToUpdateIndex > -1) {
+          cUsers[userToUpdateIndex].role = isAdmin ? 'admin' : 'standard';
 
-        return this.http.put(`${this.mBaseUrl}/${userId}`, userToUpdate);
+        }
+
+        return this.http.put(`${this.mBaseUrl}/${userId}`, cUsers[userToUpdateIndex]);
       }),
-      map(() => {})
+      map(() => {
+        this.mUsers.next(cUsers);
+      })
     )
   }
 }

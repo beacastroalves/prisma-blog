@@ -14,10 +14,13 @@
           <td>{{ user.username }}</td>
           <td>
             <div class="app-buttons">
-              <button [disabled]="user.role === 'admin'" class="btn-primary" [class.btn-outline]="user.role === 'standard'" (click)="setAdmin(true)">
+              <button [disabled]="user.role === 'admin'" class="btn-primary" [class.btn-outline]="user.role === 'standard'" (click)="setAdmin(user.id, true)">
                 Admin
               </button>
-              <button [disabled]="user.role === 'standard'" class="btn-primary" [class.btn-outline]="user.role === 'admin'" (click)="setAdmin(true)">
+              <!-- <button [disabled]="user.role === 'standard'" class="btn-primary" [class.btn-outline]="user.role === 'admin'" (click)="setAdmin(user.id, false)">
+                Moderador // IMPLEMENTAR DEPOIS UM MODERADOR
+              </button> -->
+              <button [disabled]="user.role === 'standard'" class="btn-primary" [class.btn-outline]="user.role === 'admin'" (click)="setAdmin(user.id, false)">
                 Padrão
               </button>
             </div>
