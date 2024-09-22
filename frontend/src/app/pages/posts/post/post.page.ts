@@ -59,6 +59,10 @@ export class PostPage implements OnInit, OnDestroy {
     });
   }
 
+  edit() {
+    this.router.navigate(['/admin', 'post-form', this.post.id]);
+  }
+
   delete() {
     if (confirm(`Tem certeza que deseja apagar esta publicação?`)) {
       this.postService.delete(this.post.id).subscribe(() => {

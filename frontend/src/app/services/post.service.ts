@@ -68,6 +68,18 @@ export class PostService {
     );
   }
 
+  update(post: Post, title: string, description: string): Observable<void> {
+
+    return this.http.put(`${this.mBaseUrl}/${post.id}`, {
+      ...post,
+      title,
+      description,
+      updatedAt: new Date()
+    }).pipe(
+      map(() => {})
+    );
+  }
+
   delete(postId: string): Observable<void> {
     return this.http.delete(`${this.mBaseUrl}/${postId}`).pipe(
       map(() => {})

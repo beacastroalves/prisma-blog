@@ -6,7 +6,7 @@
       <div class="app-post-username">
         <div class="app-post-username-name">Por <strong>{{ post.user.username }}</strong></div>
         @if (user && user.role === 'admin') {
-          <div class="app-post-username-edit">Editar</div>
+          <div class="app-post-username-edit" (click)="edit()">Editar</div>
           <div class="app-post-username-delete" (click)="delete()">Apagar Publicação</div>
         }
       </div>

@@ -8,6 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: PostFormPage
+  },
+  {
+    path: ':id',
+    component: PostFormPage
   }
 ];
 

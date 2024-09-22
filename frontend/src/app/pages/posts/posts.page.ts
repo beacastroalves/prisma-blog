@@ -29,9 +29,7 @@ export class PostsPage implements OnInit, OnDestroy {
       })
     );
 
-    this.postService.fetchAll().subscribe(() => {
-      console.log('sucess');
-    });
+    this.postService.fetchAll().subscribe();
   }
 
   ngOnDestroy() {

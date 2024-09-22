@@ -36,7 +36,7 @@ export class UserService {
       switchMap(users => {
         cUsers = users;
         const userToUpdateIndex = users.findIndex(user => user.id === userId);
-        
+
         if (userToUpdateIndex > -1) {
           cUsers[userToUpdateIndex].role = isAdmin ? 'admin' : 'standard';
 
