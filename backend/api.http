@@ -1,0 +1,118 @@
+@baseUrl = http://localhost:8080
+@token =tokenExample
+
+////////// AUTH ENDPOINT //////////
+// SignIn: Anyone
+POST {{baseUrl}}/auth/signIn
+Content-Type: application/json
+
+{
+  "username": "beacastro",
+  "password": "secret"
+}
+###
+
+// SignUp: Anyone
+POST {{baseUrl}}/auth/signUp
+Content-Type: application/json
+
+{
+  "username": "beacastro",
+  "password": "secret"
+}
+###
+
+////////// POST ENDPOINT //////////
+// fetchAll: Anyone
+GET {{baseUrl}}/posts
+###
+
+// fetchById: Anyone
+GET {{baseUrl}}/posts/{id}
+###
+
+// Create: Admin
+POST {{baseUrl}}/posts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Title Example 01",
+  "description": "A long description example. Example 01"
+}
+###
+
+// Update: Admin
+PUT {{baseUrl}}/posts/{id}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Title Example 01",
+  "description": "A long description example 01 of example"
+}
+###
+
+// Delete: Admin
+DELETE {{baseUrl}}/posts/{id}
+Authorization: Bearer {{token}}
+###
+
+// fetchAllComments: Anyone
+GET {{baseUrl}}/posts/{id}/comments
+###
+
+// CreateComments: Anyone logado
+POST {{baseUrl}}/posts/{id}/comments
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "Comment Example 01",
+}
+###
+
+// UpdateComments: CommentOwner
+PUT {{baseUrl}}/posts/{id}/comments/{commentId}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "Comment Example 02",
+}
+###
+
+// DeleteComments: CommentOwner, admin
+DELETE {{baseUrl}}/posts/{id}/comments/{commentId}
+Authorization: Bearer {{token}}
+###
+
+////////// USER ENDPOINT //////////
+// fetchAll: Admin
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+###
+
+// setIsAdmin: Admin
+PATCH {{baseUrl}}/users/{id}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "isAdmin": true
+}
+###
+
+////////// STORAGE ENDPOINT //////////
+// download: Anyone
+GET {{baseUrl}}/storage/{imageName}
+###
+
+// upload: Admin
+POST {{baseUrl}}/storage/{imageName}
+Authorization: Bearer {{token}}
+Content-Type: image/png
+
+< ./1.png
+###
+
