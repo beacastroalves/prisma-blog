@@ -9,19 +9,21 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.prismablog.backend.filters.JwtAuthFilter;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
   private final AuthenticationProvider authenticationProvider;
-  // private JwtAuthFilter jwtAuthFilter;
+  private JwtAuthFilter jwtAuthFilter;
 
   public SecurityConfig(
-    AuthenticationProvider authenticationProvider
-    // , JwtAuthFilter jwtAuthFilter;
+    AuthenticationProvider authenticationProvider,
+    JwtAuthFilter jwtAuthFilter
   ) {
     this.authenticationProvider = authenticationProvider;
-    // this.jwtAuthFilter = jwtAuthFilter;
+    this.jwtAuthFilter = jwtAuthFilter;
   }
 
   @Bean
@@ -36,8 +38,9 @@ public class SecurityConfig {
       .sessionManagement(session -> {
         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
       })
-      .authenticationProvider(authenticationProvider);
-      // .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-    return http.build();
+      .authenticationProvider(authenticationProvider)
+      .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+      return http.build();
   }
 }

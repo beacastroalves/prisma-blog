@@ -38,6 +38,7 @@ public class AuthConfig {
     return config.getAuthenticationManager();
   }
 
+  @Bean
   AuthenticationProvider authenticationProvider() {
     DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
@@ -46,5 +47,4 @@ public class AuthConfig {
 
     return authProvider;
   }
-
 }
