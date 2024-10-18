@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:8080
-@token =tokenExample
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MjkyNzEwMDMsImV4cCI6MTcyOTI3MTAyM30.vWesAF51_Shxekye7fgMx1_orIRrUfPLWHGfAp8gRCo
 
 ////////// AUTH ENDPOINT //////////
 // SignIn: Anyone
@@ -105,14 +105,16 @@ Content-Type: application/json
 
 ////////// STORAGE ENDPOINT //////////
 // download: Anyone
-GET {{baseUrl}}/storage/{imageName}
+GET {{baseUrl}}/storage/test123
+# GET {{baseUrl}}/storage/{imageName}
 ###
 
 // upload: Admin
-POST {{baseUrl}}/storage/{imageName}
+POST {{baseUrl}}/storage/test123
 Authorization: Bearer {{token}}
-Content-Type: image/png
+# POST {{baseUrl}}/storage/{imageName}
+# Content-Type: image/png
 
-< ./1.png
+# < ../static/1.png
 ###
 
