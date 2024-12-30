@@ -36,6 +36,9 @@ public class User implements UserDetails{
   @CreationTimestamp
   private LocalDateTime updatedAt;
 
+  @Column(nullable = false)
+  private String role;
+
   public Long getId() {
     return id;
   }
@@ -62,8 +65,17 @@ public class User implements UserDetails{
     this.password = password;
   }
 
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
+  }
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of();
+    return List.of(() -> this.role);
   }
+
 }

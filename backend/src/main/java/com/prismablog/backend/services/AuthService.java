@@ -35,6 +35,12 @@ public class AuthService {
     user.setUsername(request.getUsername());
     user.setPassword(this.passwordEncoder.encode(request.getPassword()));
 
+    if (this.userRepository.count() > 0) {
+      user.setRole("STANDARD");
+    } else {
+      user.setRole("ADMIN");
+    }
+
     user = this.userRepository.save(user);
 
     this.authenticationManager.authenticate(

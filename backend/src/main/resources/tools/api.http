@@ -1,13 +1,18 @@
 @baseUrl = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MjkyNzEwMDMsImV4cCI6MTcyOTI3MTAyM30.vWesAF51_Shxekye7fgMx1_orIRrUfPLWHGfAp8gRCo
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU1OTAxMzMsImV4cCI6MTczNTU5MzczM30.S-a7PLj3NVB-t7AAa5MUGFNvI2nanmZcFqD6kwMlmZc
+@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6YyIsImlhdCI6MTczNTU5MDE1NiwiZXhwIjoxNzM1NTkzNzU2fQ.J3hur7s_TCakubOqgdGOMIFPGrkX0KCdFEeGRGDvi8U
 
 ////////// AUTH ENDPOINT //////////
 // SignIn: Anyone
 POST {{baseUrl}}/auth/signIn
 Content-Type: application/json
 
+# {
+#   "username": "beacastro",
+#   "password": "secret"
+# }
 {
-  "username": "beacastro",
+  "username": "beatrizc",
   "password": "secret"
 }
 ###
@@ -16,8 +21,12 @@ Content-Type: application/json
 POST {{baseUrl}}/auth/signUp
 Content-Type: application/json
 
+# {
+#   "username": "beacastro",
+#   "password": "secret"
+# }
 {
-  "username": "beacastro",
+  "username": "beatrizc",
   "password": "secret"
 }
 ###
@@ -105,16 +114,21 @@ Content-Type: application/json
 
 ////////// STORAGE ENDPOINT //////////
 // download: Anyone
-GET {{baseUrl}}/storage/test123
+GET {{baseUrl}}/storage/2b0c
 # GET {{baseUrl}}/storage/{imageName}
 ###
 
 // upload: Admin
-POST {{baseUrl}}/storage/test123
-Authorization: Bearer {{token}}
+POST {{baseUrl}}/storage
 # POST {{baseUrl}}/storage/{imageName}
-# Content-Type: image/png
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=B
 
-# < ../static/1.png
+--B
+Content-Disposition: form-data; name="file"; filename="test.png"
+Content-Type: image/png
+
+< ../static/f852.png
+--B-
 ###
 

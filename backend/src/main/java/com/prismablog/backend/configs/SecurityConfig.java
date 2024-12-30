@@ -36,6 +36,8 @@ public class SecurityConfig {
           .permitAll()
           .requestMatchers(HttpMethod.GET,"/storage/**")
           .permitAll()
+          .requestMatchers(HttpMethod.POST,"/storage/**")
+          .hasAuthority("ADMIN")
           .anyRequest()
           .authenticated();
       })
