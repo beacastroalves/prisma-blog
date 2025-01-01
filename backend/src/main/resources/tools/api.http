@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU1OTAxMzMsImV4cCI6MTczNTU5MzczM30.S-a7PLj3NVB-t7AAa5MUGFNvI2nanmZcFqD6kwMlmZc
-@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6YyIsImlhdCI6MTczNTU5MDE1NiwiZXhwIjoxNzM1NTkzNzU2fQ.J3hur7s_TCakubOqgdGOMIFPGrkX0KCdFEeGRGDvi8U
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU3Mzg0MzYsImV4cCI6MTczNTc0MjAzNn0.nyoUm2mpxZkJFr-EqCHFAxJTAZSi259b09Uc_V0ak_4
+@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6YyIsImlhdCI6MTczNTczODQ1MSwiZXhwIjoxNzM1NzQyMDUxfQ.5kSe5JTvhsofN2ubFuYvIxwMe0iby0JKAU0-sk0rz6I
 
 ////////// AUTH ENDPOINT //////////
 // SignIn: Anyone
@@ -103,7 +103,7 @@ Authorization: Bearer {{token}}
 ###
 
 // setIsAdmin: Admin
-PATCH {{baseUrl}}/users/{id}
+PATCH {{baseUrl}}/users/7
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
