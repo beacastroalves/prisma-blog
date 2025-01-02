@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.prismablog.backend.controllers.dto.request.PostCommentRequest;
 import com.prismablog.backend.controllers.dto.request.PostRequest;
 import com.prismablog.backend.services.PostService;
 
@@ -52,21 +53,21 @@ public class PostController {
 
   @GetMapping("{id}/comments")
   public ResponseEntity<?> fetchAllComments(@PathVariable Long id) {
-    return ResponseEntity.ok("PostId: " + id + " comments");
+    return ResponseEntity.ok(this.postService.fetchAllComments(id));
   }
 
   @PostMapping("{id}/comments")
-  public ResponseEntity<?> storeComment(@PathVariable Long id) {
-    return ResponseEntity.ok("PostId: " + id + " comments store");
+  public ResponseEntity<?> storeComment(@PathVariable Long id, @RequestBody PostCommentRequest request) {
+    return ResponseEntity.ok(this.postService.storeComment(id, request));
   }
 
   @PutMapping("{id}/comments/{commentId}")
-  public ResponseEntity<?> updateComment(@PathVariable Long id, @PathVariable Long commentId) {
-    return ResponseEntity.ok("PostId: " + id + " comments update commentId: " + commentId);
+  public ResponseEntity<?> updateComment(@PathVariable Long commentId, @RequestBody PostCommentRequest request) {
+    return ResponseEntity.ok(this.postService.updateComment(commentId, request));
   }
 
   @DeleteMapping("{id}/comments/{commentId}")
-  public ResponseEntity<?> deleteComment(@PathVariable Long id, @PathVariable Long commentId) {
-    return ResponseEntity.ok("PostId: " + id + " comments update commentId: " + commentId);
+  public ResponseEntity<?> deleteComment(@PathVariable Long commentId) {
+    return ResponseEntity.ok(this.postService.deleteComment(commentId));
   }
 }

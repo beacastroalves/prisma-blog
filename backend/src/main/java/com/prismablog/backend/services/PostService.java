@@ -7,11 +7,15 @@ import java.util.Optional;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.prismablog.backend.controllers.dto.request.PostCommentRequest;
 import com.prismablog.backend.controllers.dto.request.PostRequest;
+import com.prismablog.backend.controllers.dto.response.PostCommentResponse;
 import com.prismablog.backend.controllers.dto.response.PostResponse;
 import com.prismablog.backend.controllers.dto.response.PostUserResponse;
 import com.prismablog.backend.models.Post;
+import com.prismablog.backend.models.PostComment;
 import com.prismablog.backend.models.User;
+import com.prismablog.backend.repositories.PostCommentRepository;
 import com.prismablog.backend.repositories.PostRepository;
 import com.prismablog.backend.repositories.UserRepository;
 
@@ -20,13 +24,16 @@ public class PostService {
 
   private final PostRepository postRepository;
   private final UserRepository userRepository;
+  private final PostCommentRepository postCommentRepository;
 
   public PostService(
     PostRepository postRepository,
-    UserRepository userRepository
+    UserRepository userRepository,
+    PostCommentRepository postCommentRepository
   ) {
     this.postRepository = postRepository;
     this.userRepository = userRepository;
+    this.postCommentRepository = postCommentRepository;
   }
 
   public List<PostResponse> fetchAll() {
@@ -77,6 +84,47 @@ public class PostService {
     return null;
   }
 
+  public List<PostCommentResponse> fetchAllComments(Long id) {
+    return mapperToPostCommentResponses(this.postCommentRepository.findAllByPostId(id));
+  }
+
+  public PostCommentResponse storeComment(Long id, PostCommentRequest request) {
+    PostComment postComment = new PostComment();
+    postComment.setText(request.getText());
+
+    Post post = this.postRepository.findById(id).orElseThrow();
+    postComment.setPost(post);
+
+
+    String username = SecurityContextHolder.getContext().getAuthentication().getName();
+    User user = this.userRepository.findByUsername(username).orElseThrow();
+    postComment.setUser(user);
+
+    postComment = this.postCommentRepository.save(postComment);
+
+    return mapperToPostCommentResponse(postComment);
+  }
+
+  public PostCommentResponse updateComment(Long commentId, PostCommentRequest request) {
+    PostComment postComment = this.postCommentRepository.findById(commentId).orElseThrow();
+    postComment.setText(request.getText());
+
+    this.postCommentRepository.save(postComment);
+
+    return mapperToPostCommentResponse(postComment);
+  }
+
+  public PostCommentResponse deleteComment(Long commentId) {
+    Optional<PostComment> optional = this.postCommentRepository.findById(commentId);
+    if (optional.isPresent()) {
+      this.postCommentRepository.deleteById(commentId);
+
+      return mapperToPostCommentResponse(optional.get());
+    }
+
+    return null;
+  }
+
   private List<PostResponse> mapperToPostResponses(List<Post> posts) {
     return posts.stream().map(post -> mapperToPostResponse(post)).toList();
   }
@@ -107,4 +155,17 @@ public class PostService {
     return response;
   }
 
+  private List<PostCommentResponse> mapperToPostCommentResponses(List<PostComment> postComments) {
+    return postComments.stream().map(postComment -> mapperToPostCommentResponse(postComment)).toList();
+  }
+
+  private PostCommentResponse mapperToPostCommentResponse(PostComment postComment) {
+    PostCommentResponse response = new PostCommentResponse();
+    response.setUpdatedAt(postComment.getUpdatedAt());
+    response.setId(postComment.getId());
+    response.setText(postComment.getText());
+    response.setUsername(postComment.getUser().getUsername());
+
+    return response;
+  }
 }

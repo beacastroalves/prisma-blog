@@ -1,20 +1,20 @@
 @baseUrl = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4MzM2OTgsImV4cCI6MTczNTgzNzI5OH0.Pukj93lMsXshe5mwM6kJA6JAMveQ3stjWyjbzMV4eD4
-@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6Y1NUQU5EIiwiaWF0IjoxNzM1ODMzODM1LCJleHAiOjE3MzU4Mzc0MzV9.8gxawM8b0moKuuTgkgBKGoR8wkauewC3L8hzGzFsgfo
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4NDMwNzcsImV4cCI6MTczNTg0NjY3N30.ll6YCZ1viMnP2yO19vFmq6ZnQd9dbpuav2EczbqEFUY
+@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6Y1NUQU5EIiwiaWF0IjoxNzM1ODQzMDYwLCJleHAiOjE3MzU4NDY2NjB9.2RAQE3mbH_sCeLDmqFHJxSDNMw96ZHPKBf_KG2q-XgI
 
 ////////// AUTH ENDPOINT //////////
 // SignIn: Anyone
 POST {{baseUrl}}/auth/signIn
 Content-Type: application/json
 
-# {
-#   "username": "beacastro",
-#   "password": "secret"
-# }
 {
-  "username": "beatrizcSTAND",
+  "username": "beacastro",
   "password": "secret"
 }
+# {
+#   "username": "beatrizcSTAND",
+#   "password": "secret"
+# }
 ###
 
 // SignUp: Anyone
@@ -46,8 +46,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "title": "Title Example 01",
-  "description": "Example 01 A long description example. Example 01 A long description example. Example 01 A long description example. Example 01"
+  "title": "Title Example 12",
+  "description": "Example 12 A long description example. Example 12 A long description example. Example 12 A long description example. Example 12"
 }
 ###
 
@@ -68,31 +68,31 @@ Authorization: Bearer {{token}}
 ###
 
 // fetchAllComments: Anyone
-GET {{baseUrl}}/posts/1/comments
+GET {{baseUrl}}/posts/11/comments
 ###
 
 // CreateComments: Anyone logado
-POST {{baseUrl}}/posts/1/comments
-Authorization: Bearer {{token2}}
+POST {{baseUrl}}/posts/11/comments
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "text": "Comment Example 05",
+  "text": "Comment 03"
 }
 ###
 
 // UpdateComments: CommentOwner
-PUT {{baseUrl}}/posts/
-Authorization: Bearer {{token2}}
+PUT {{baseUrl}}/posts/11/comments/5
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "text": "Comment Example 02",
+  "text": "My comment #1"
 }
 ###
 
 // DeleteComments: CommentOwner, admin
-DELETE {{baseUrl}}/posts/1/comments/3
+DELETE {{baseUrl}}/posts/11/comments/9
 Authorization: Bearer {{token}}
 ###
 
