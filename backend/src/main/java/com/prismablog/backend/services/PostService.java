@@ -2,6 +2,7 @@ package com.prismablog.backend.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,11 @@ public class PostService {
     return mapperToPostResponses(posts);
   }
 
-  public Object store(PostRequest request) {
+  public PostResponse fetchById(Long id) {
+    return mapperToPostResponse(this.postRepository.findById(id).orElse(null));
+  }
+
+  public PostResponse store(PostRequest request) {
     Post post = new Post();
     post.setTitle(request.getTitle());
     post.setDescription(request.getDescription());
@@ -50,11 +55,37 @@ public class PostService {
     return mapperToPostResponse(post);
   }
 
+  public PostResponse update(Long id, PostRequest request) {
+    Post post = this.postRepository.findById(id).orElseThrow();
+
+    post.setTitle(request.getTitle());
+    post.setDescription(request.getDescription());
+
+    post = this.postRepository.save(post);
+
+    return mapperToPostResponse(post);
+  }
+
+  public PostResponse delete(Long id) {
+    Optional<Post> optional = this.postRepository.findById(id);
+    if (optional.isPresent()) {
+      this.postRepository.deleteById(id);
+
+      return mapperToPostResponse(optional.get());
+    }
+
+    return null;
+  }
+
   private List<PostResponse> mapperToPostResponses(List<Post> posts) {
     return posts.stream().map(post -> mapperToPostResponse(post)).toList();
   }
 
   private PostResponse mapperToPostResponse(Post post) {
+    if (post == null) {
+      return null;
+    }
+
     PostResponse response = new PostResponse();
     response.setId(post.getId());
     response.setCreatedAt(post.getCreatedAt());

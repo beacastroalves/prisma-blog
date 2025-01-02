@@ -37,33 +37,33 @@ GET {{baseUrl}}/posts
 ###
 
 // fetchById: Anyone
-GET {{baseUrl}}/posts/123
+GET {{baseUrl}}/posts/8
 ###
 
 // Create: Admin
 POST {{baseUrl}}/posts
-Authorization: Bearer {{token2}}
-Content-Type: application/json
-
-{
-  "title": "Title Example 06",
-  "description": "Example 06 A long description example. Example 06 A long description example. Example 06 A long description example. Example 06"
-}
-###
-
-// Update: Admin
-PUT {{baseUrl}}/posts/2
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "title": "Title Example 02",
-  "description": "Another example 02"
+  "title": "Title Example 01",
+  "description": "Example 01 A long description example. Example 01 A long description example. Example 01 A long description example. Example 01"
+}
+###
+
+// Update: Admin
+PUT {{baseUrl}}/posts/5
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+"title": "Title Example 05",
+  "description": "Example 05 A long description example. Example 05 A long description example. Example 05 A long description example. Example 05"
 }
 ###
 
 // Delete: Admin
-DELETE {{baseUrl}}/posts/2
+DELETE {{baseUrl}}/posts/8
 Authorization: Bearer {{token}}
 ###
 

@@ -32,7 +32,7 @@ public class PostController {
 
   @GetMapping("/{id}")
   public ResponseEntity<?> fetchById(@PathVariable Long id) {
-    return ResponseEntity.ok("User ID: " + id);
+    return ResponseEntity.ok(this.postService.fetchById(id));
   }
 
   @PostMapping
@@ -42,11 +42,11 @@ public class PostController {
 
   @PutMapping("{id}")
   public ResponseEntity<?> update(@PathVariable Long id, @RequestBody PostRequest request) {
-    return ResponseEntity.ok("Updated postId: " + id + " with the values -> title: " + request.getTitle() + ", description: " + request.getDescription());
+    return ResponseEntity.ok(this.postService.update(id, request));
   }
 
   @DeleteMapping("{id}")
   public ResponseEntity<?> delete(@PathVariable Long id) {
-    return ResponseEntity.ok("Trying to delete post id: " + id);
+    return ResponseEntity.ok(this.postService.delete(id));
   }
 }
