@@ -1,20 +1,20 @@
 @baseUrl = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4MzAyNjIsImV4cCI6MTczNTgzMzg2Mn0.70sC9fgk3ZbhWCiYMa8gvhUqBCCJ9c8W54p-QPprFJc
-@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6YyIsImlhdCI6MTczNTgzMDI0NiwiZXhwIjoxNzM1ODMzODQ2fQ.q0OFNazzJclt4RkBAzaUXveybmdefrsAreL6vHLljCs
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4MzM2OTgsImV4cCI6MTczNTgzNzI5OH0.Pukj93lMsXshe5mwM6kJA6JAMveQ3stjWyjbzMV4eD4
+@token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6Y1NUQU5EIiwiaWF0IjoxNzM1ODMzODM1LCJleHAiOjE3MzU4Mzc0MzV9.8gxawM8b0moKuuTgkgBKGoR8wkauewC3L8hzGzFsgfo
 
 ////////// AUTH ENDPOINT //////////
 // SignIn: Anyone
 POST {{baseUrl}}/auth/signIn
 Content-Type: application/json
 
-{
-  "username": "beacastro",
-  "password": "secret"
-}
 # {
-#   "username": "beatrizc",
+#   "username": "beacastro",
 #   "password": "secret"
 # }
+{
+  "username": "beatrizcSTAND",
+  "password": "secret"
+}
 ###
 
 // SignUp: Anyone
@@ -26,7 +26,7 @@ Content-Type: application/json
 #   "password": "secret"
 # }
 {
-  "username": "beatrizc",
+  "username": "beatrizcSTAND",
   "password": "secret"
 }
 ###
@@ -68,22 +68,22 @@ Authorization: Bearer {{token}}
 ###
 
 // fetchAllComments: Anyone
-GET {{baseUrl}}/posts/{id}/comments
+GET {{baseUrl}}/posts/1/comments
 ###
 
 // CreateComments: Anyone logado
-POST {{baseUrl}}/posts/{id}/comments
-Authorization: Bearer {{token}}
+POST {{baseUrl}}/posts/1/comments
+Authorization: Bearer {{token2}}
 Content-Type: application/json
 
 {
-  "text": "Comment Example 01",
+  "text": "Comment Example 05",
 }
 ###
 
 // UpdateComments: CommentOwner
-PUT {{baseUrl}}/posts/{id}/comments/{commentId}
-Authorization: Bearer {{token}}
+PUT {{baseUrl}}/posts/
+Authorization: Bearer {{token2}}
 Content-Type: application/json
 
 {
@@ -92,7 +92,7 @@ Content-Type: application/json
 ###
 
 // DeleteComments: CommentOwner, admin
-DELETE {{baseUrl}}/posts/{id}/comments/{commentId}
+DELETE {{baseUrl}}/posts/1/comments/3
 Authorization: Bearer {{token}}
 ###
 

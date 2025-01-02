@@ -49,4 +49,24 @@ public class PostController {
   public ResponseEntity<?> delete(@PathVariable Long id) {
     return ResponseEntity.ok(this.postService.delete(id));
   }
+
+  @GetMapping("{id}/comments")
+  public ResponseEntity<?> fetchAllComments(@PathVariable Long id) {
+    return ResponseEntity.ok("PostId: " + id + " comments");
+  }
+
+  @PostMapping("{id}/comments")
+  public ResponseEntity<?> storeComment(@PathVariable Long id) {
+    return ResponseEntity.ok("PostId: " + id + " comments store");
+  }
+
+  @PutMapping("{id}/comments/{commentId}")
+  public ResponseEntity<?> updateComment(@PathVariable Long id, @PathVariable Long commentId) {
+    return ResponseEntity.ok("PostId: " + id + " comments update commentId: " + commentId);
+  }
+
+  @DeleteMapping("{id}/comments/{commentId}")
+  public ResponseEntity<?> deleteComment(@PathVariable Long id, @PathVariable Long commentId) {
+    return ResponseEntity.ok("PostId: " + id + " comments update commentId: " + commentId);
+  }
 }
