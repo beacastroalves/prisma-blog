@@ -67,6 +67,7 @@ public class AuthService {
     response.setToken(token);
     response.setExpiresIn(this.jwtService.getExpirationTime());
     response.setUsername(user.getUsername());
+    response.setRole(user.getRole());
 
     return response;
   }

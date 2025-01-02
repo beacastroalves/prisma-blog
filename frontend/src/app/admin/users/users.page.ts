@@ -34,7 +34,7 @@ export class UsersPage implements OnInit, OnDestroy {
     });
   }
 
-  setAdmin(userId: string, isAdmin: boolean) {
+  setAdmin(userId: number, isAdmin: boolean) {
     this.userService.setIsAdmin(userId, isAdmin).subscribe();
   }
  }

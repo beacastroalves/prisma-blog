@@ -1,6 +1,6 @@
 <div class="app-container">
   <div *ngIf="post" class="app-post">
-    <div class="app-post-image" [style.background-image]="'url(' + imageUrl + post.id + '.png)'"></div>
+    <div class="app-post-image" [style.background-image]="'url(' + imageUrl + post.id + ')'"></div>
     <div class="app-post-title">{{ post.title }}</div>
     <div class="app-post-user">
       <div class="app-post-username">
@@ -39,15 +39,15 @@
         }
       </div>
       <div class="app-post-comment-count">
-        {{ post.comments.length }}
-        @if (post.comments.length > 1) {
+        {{ postComments.length }}
+        @if (postComments.length > 1) {
           comentários
         } @else {
           comentário
         }
       </div>
       <div class="app-post-comment-items">
-        <div *ngFor="let comment of post.comments; let i = index" class="app-post-comment-item">
+        <div *ngFor="let comment of postComments; let i = index" class="app-post-comment-item">
           <div class="app-post-comment-item-header">
             <div class="app-post-comment-item-header-username">
               <div class="app-post-comment-item-header-username-name">{{ comment.username }}</div>
@@ -60,7 +60,7 @@
                 }
               }
             </div>
-          <div class="app-post-comment-item-header-date">{{ comment.createdAt | dateFormat: true}}</div>
+          <div class="app-post-comment-item-header-date">{{ comment.updatedAt | dateFormat: true}}</div>
         </div>
           <div class="app-post-comment-item-content">{{ comment.text }}</div>
         </div>

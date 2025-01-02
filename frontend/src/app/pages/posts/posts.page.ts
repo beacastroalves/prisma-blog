@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 export class PostsPage implements OnInit, OnDestroy {
   posts: Post[];
 
-  imageUrl = `${environment.apiUrl}/images/`
+  imageUrl = `${environment.apiUrl}/storage/`
   subs: Subscription[] = [];
 
   constructor (

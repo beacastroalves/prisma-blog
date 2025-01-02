@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
-import { User } from './models/user.model';
+import { AuthUser } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ import { User } from './models/user.model';
 })
 export class AppComponent implements  OnInit, OnDestroy{
 
-  user: User;
+  user: AuthUser;
   subs: Subscription[] = [];
 
   constructor(

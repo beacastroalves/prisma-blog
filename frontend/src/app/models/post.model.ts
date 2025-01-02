@@ -3,40 +3,33 @@ export interface PostUser {
 }
 
 export class PostComment {
-  createdAt: Date;
+  id: number;
+  updatedAt: Date;
   username: string;
   text: string;
 
   constructor(res: any) {
-    this.createdAt = new Date(res.createdAt);
+    this.id = res.id;
+    this.updatedAt = new Date(res.updatedAt);
     this.username = res.username;
     this.text = res.text;
   }
 }
 
 export class Post {
+  id: number;
   createdAt: Date;
   updatedAt: Date;
-  id: string;
   title: string;
   description: string;
   user: PostUser;
-  comments: PostComment[];
 
   constructor(res: any) {
+    this.id = res.id
     this.createdAt = new Date(res.createdAt);
     this.updatedAt = new Date(res.updatedAt);
-    this.id = res.id
     this.title = res.title;
     this.description = res.description;
     this.user = res.user;
-
-    if (res.comments) {
-      this.comments = (res.comments as any[]).map(comment => {
-        return new PostComment(comment);
-      });
-    } else {
-      this.comments = [];
-    }
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../main";
 import { BehaviorSubject, Observable, map, switchMap } from "rxjs";
-import { Post } from "../models/post.model";
+import { Post, PostComment } from "../models/post.model";
 import { AuthService } from "./auth.service";
 
 @Injectable({ providedIn: 'root' })
@@ -10,9 +10,14 @@ export class PostService {
 
   private mBaseUrl = `${environment.apiUrl}/posts`;
   private mPosts = new BehaviorSubject<Post[]>([]);
+  private mPostsComments = new BehaviorSubject<PostComment[]>([]);
 
   get posts(): Observable<Post[]> {
     return this.mPosts.asObservable();
+  }
+
+  get postComments(): Observable<PostComment[]> {
+    return this.mPostsComments.asObservable();
   }
 
   constructor(
@@ -34,7 +39,7 @@ export class PostService {
     );
   }
 
-  fetchById(id: string): Observable<Post> {
+  fetchById(id: number): Observable<Post> {
     return this.http.get<any>(`${this.mBaseUrl}/${id}`).pipe(
       map(res => {
         // TODO: remove when real backend gets implemented
@@ -80,48 +85,54 @@ export class PostService {
     );
   }
 
-  delete(postId: string): Observable<void> {
+  delete(postId: number): Observable<void> {
     return this.http.delete(`${this.mBaseUrl}/${postId}`).pipe(
       map(() => {})
     )
   }
 
-  createComment(post: Post, text: string): Observable<void> {
-    return this.authService.authState.pipe(
-      switchMap(authState => {
-        post.comments.push({
-          createdAt: new Date(), text, username: authState.username
-        });
-
-        // TODO: remove when real backend gets implemented
-        const postToSend = { ...post };
-        postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
-
-        return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend);
-      }),
-      map(() => {})
+  fetchAllCommentsById(postId: number): Observable<void> {
+    return this.http.get<any[]>(`${this.mBaseUrl}/${postId}/comments`).pipe(
+      map(res => {
+        this.mPostsComments.next(res.map(item => new PostComment(item)));
+      })
     );
   }
 
-  editComment(post: Post, commentIndex: number, text: string): Observable<void> {
-    post.comments[commentIndex].text = text;
-
-    const postToSend = { ...post };
-    postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
-
-    return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
-      map(() => {})
-    )
+  createComment(postId: number, text: string): Observable<void> {
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.post(`${this.mBaseUrl}/${postId}/comments`, { text }, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
+      }),
+      switchMap(() => {
+        return this.fetchAllCommentsById(postId)
+      })
+    );
   }
 
-  deleteComment(post: Post, commentIndex: number): Observable<void> {
-    post.comments = post.comments.filter((_, i) => i !== commentIndex);
+  // editComment(post: Post, commentIndex: number, text: string): Observable<void> {
+  //   post.comments[commentIndex].text = text;
 
-    const postToSend = { ...post };
-    postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
+  //   const postToSend = { ...post };
+  //   postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
 
-    return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
-      map(() => {})
-    )
-  }
+  //   return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
+  //     map(() => {})
+  //   )
+  // }
+
+  // deleteComment(post: Post, commentIndex: number): Observable<void> {
+  //   post.comments = post.comments.filter((_, i) => i !== commentIndex);
+
+  //   const postToSend = { ...post };
+  //   postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
+
+  //   return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
+  //     map(() => {})
+  //   )
+  // }
 }

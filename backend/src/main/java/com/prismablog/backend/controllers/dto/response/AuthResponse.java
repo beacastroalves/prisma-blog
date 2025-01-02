@@ -4,6 +4,7 @@ public class AuthResponse {
 
   private String username;
   private String token;
+  private String role;
   private Long expiresIn;
 
   public String getUsername() {
@@ -20,6 +21,14 @@ public class AuthResponse {
 
   public void setToken(String token) {
     this.token = token;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 
   public Long getExpiresIn() {

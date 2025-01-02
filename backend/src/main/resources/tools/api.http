@@ -1,5 +1,6 @@
 @baseUrl = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4NDMwNzcsImV4cCI6MTczNTg0NjY3N30.ll6YCZ1viMnP2yO19vFmq6ZnQd9dbpuav2EczbqEFUY
+# @token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4NTM2ODYsImV4cCI6MTczNTg1NzI4Nn0.onPvaQi_ih55kmivUFw-28AaP71NPUnbOJdDJb195-A
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFjYXN0cm8iLCJpYXQiOjE3MzU4NTMyNjAsImV4cCI6MTczNTg1Njg2MH0.h175CEj3oY3Jd7M3wHXhpWXbcfqnCryjU3ojIClrv0g
 @token2 = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWF0cml6Y1NUQU5EIiwiaWF0IjoxNzM1ODQzMDYwLCJleHAiOjE3MzU4NDY2NjB9.2RAQE3mbH_sCeLDmqFHJxSDNMw96ZHPKBf_KG2q-XgI
 
 ////////// AUTH ENDPOINT //////////
@@ -68,7 +69,7 @@ Authorization: Bearer {{token}}
 ###
 
 // fetchAllComments: Anyone
-GET {{baseUrl}}/posts/11/comments
+GET {{baseUrl}}/posts/12/comments
 ###
 
 // CreateComments: Anyone logado
@@ -77,7 +78,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "text": "Comment 03"
+  "text": "Criando um comentario pelo vs api novamente"
 }
 ###
 
@@ -128,7 +129,7 @@ Content-Type: multipart/form-data; boundary=B
 Content-Disposition: form-data; name="file"; filename="test.png"
 Content-Type: image/png
 
-< ../static/f852.png
+< ../static/11.png
 --B-
 ###
 

@@ -28,7 +28,7 @@ export class UserService {
     )
   }
 
-  setIsAdmin(userId: string, isAdmin: boolean): Observable<void> {
+  setIsAdmin(userId: number, isAdmin: boolean): Observable<void> {
     let cUsers: User[];
 
     return this.users.pipe(

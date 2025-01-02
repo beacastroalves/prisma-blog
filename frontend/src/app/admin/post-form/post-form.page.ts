@@ -27,7 +27,7 @@ export class PostFormPage implements OnInit {
       if (paraMap.has('id')) {
         this.editMode = true;
 
-        this.postService.fetchById(paraMap.get('id')).subscribe(post => {
+        this.postService.fetchById(+paraMap.get('id')).subscribe(post => {
           // TODO: remove when real backend gets implemented
           post.description = post.description.replace(/<p>|<\/p>/g, '');
 

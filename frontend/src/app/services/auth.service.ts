@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map, Observable, switchMap, take } from "rxjs";
-import { User } from "../models/user.model";
+import { AuthUser } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../main";
 
@@ -8,9 +8,9 @@ import { environment } from "../../main";
 export class AuthService {
 
   private mBaseUrl = `${environment.apiUrl}/auth`;
-  private mUser = new BehaviorSubject<User>(null);
+  private mUser = new BehaviorSubject<AuthUser>(null);
 
-  get user(): Observable<User> {
+  get user(): Observable<AuthUser> {
     return this.mUser.asObservable().pipe(
       take(1),
       switchMap(authState => {
@@ -27,7 +27,7 @@ export class AuthService {
     );
   }
 
-  get authState(): Observable<User> {
+  get authState(): Observable<AuthUser> {
     return this.user.pipe(
       take(1)
     );
@@ -38,15 +38,9 @@ export class AuthService {
   ) { }
 
   login(username: string, password: string): Observable<void> {
-    return this.http.get<User[]>(`${this.mBaseUrl}?username=${username}&password=${password}`).pipe(
-      map(users => {
-        if (users.length < 1) {
-          throw new Error('UserNotFound');
-        }
-
-        const { id, username, role } = users[0];
-
-        const user: User = { id, username, role };
+    return this.http.post<AuthUser>(`${this.mBaseUrl}/signIn`, { username, password}).pipe(
+      map(res => {
+        const user = new AuthUser(res);
         this.mUser.next(user);
         localStorage.setItem('authUser', JSON.stringify(user));
       })
@@ -54,12 +48,9 @@ export class AuthService {
   }
 
   register(username: string, password: string): Observable<void> {
-    return this.http.post<any>(`${this.mBaseUrl}`, {
-      username, password, role: 'standard'
-    }).pipe(
+    return this.http.post<AuthUser>(`${this.mBaseUrl}/signUp`, { username, password }).pipe(
       map(res => {
-        const { id, username, role } = res;
-        const user: User = { id, username, role };
+        const user = new AuthUser(res);
         this.mUser.next(user);
         localStorage.setItem('authUser', JSON.stringify(user));
       })
