@@ -12,15 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prismablog.backend.controllers.dto.request.PostRequest;
+import com.prismablog.backend.services.PostService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/posts")
 public class PostController {
 
+  private final PostService postService;
+
+  public PostController(PostService postService) {
+    this.postService = postService;
+  }
+
   @GetMapping
   public ResponseEntity<?> fetAll() {
-    return ResponseEntity.ok("All posts");
+    return ResponseEntity.ok(this.postService.fetchAll());
   }
 
   @GetMapping("/{id}")
@@ -30,7 +37,7 @@ public class PostController {
 
   @PostMapping
   public ResponseEntity<?> store(@RequestBody PostRequest request) {
-    return ResponseEntity.ok("Creating post, title: " + request.getTitle() + ", description: " + request.getDescription());
+    return ResponseEntity.ok(this.postService.store(request));
   }
 
   @PutMapping("{id}")

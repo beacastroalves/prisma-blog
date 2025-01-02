@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,7 +34,7 @@ public class User implements UserDetails{
   @Column(updatable = false)
   private LocalDateTime createdAt;
 
-  @CreationTimestamp
+  @UpdateTimestamp
   private LocalDateTime updatedAt;
 
   @Column(nullable = false)
