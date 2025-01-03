@@ -18,11 +18,11 @@
         <div class="app-control">
           <div class="app-label"></div>
           <div class="app-input">
-            <input type="text" placeholder="Imagem">
+            <input type="file" (change)="onFileChanged($event)" formControlName="imageUrl">
           </div>
-          <!-- <div *ngIf="hasError('imagem')" class="app-error">
-            <ng-container *ngIf="getErrorName('username')['required']">Campo Obrigatório</ng-container>
-          </div> -->
+          <div *ngIf="hasError('imageUrl')" class="app-error">
+            <ng-container *ngIf="getErrorName('imageUrl')['required']">Campo Obrigatório</ng-container>
+          </div>
         </div>
         <div class="app-control full-height">
           <div class="app-label"></div>

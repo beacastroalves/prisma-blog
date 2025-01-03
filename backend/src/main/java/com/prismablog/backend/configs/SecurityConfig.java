@@ -9,9 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import com.prismablog.backend.filters.JwtAuthFilter;
 
@@ -33,13 +30,15 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
     http.csrf(csrf -> csrf.disable())
-      .authorizeHttpRequests(httpRequest -> {
-        httpRequest
+      .authorizeHttpRequests(httpRequests -> {
+        httpRequests
           .requestMatchers("/auth/**")
           .permitAll()
-          .requestMatchers(HttpMethod.GET,"/storage/**", "/posts/**")
+          .requestMatchers(HttpMethod.OPTIONS, "/**")
           .permitAll()
-          .requestMatchers(HttpMethod.POST,"/storage/**", "/posts")
+          .requestMatchers(HttpMethod.GET, "/storage/**", "/posts/**")
+          .permitAll()
+          .requestMatchers(HttpMethod.POST, "/storage/**", "/posts")
           .hasAuthority("ADMIN")
           .requestMatchers(HttpMethod.PUT, "/posts/*")
           .hasAuthority("ADMIN")

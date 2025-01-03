@@ -26,7 +26,7 @@ public class UserService {
     return mapToUserResponses(users);
   }
 
-  public String setIsAdmin(Long id, UserRequest request) {
+  public User setIsAdmin(Long id, UserRequest request) {
     User user = this.userRepository.findById(id).orElseThrow();
 
     String role;
@@ -41,7 +41,7 @@ public class UserService {
 
     this.userRepository.save(user);
 
-    return role;
+    return user;
   }
 
   private List<UserResponse> mapToUserResponses(List<User> users) {

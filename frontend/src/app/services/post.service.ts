@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../main";
-import { BehaviorSubject, Observable, map, switchMap } from "rxjs";
+import { BehaviorSubject, Observable, map, of, switchMap } from "rxjs";
 import { Post, PostComment } from "../models/post.model";
 import { AuthService } from "./auth.service";
 
@@ -32,6 +32,7 @@ export class PostService {
           if (item.description.length > 125) {
             item.description = `${item.description.substr(0, 125).trim()}...`;
           }
+
           return new Post(item)
         });
         this.mPosts.next(posts);
@@ -54,41 +55,80 @@ export class PostService {
     );
   }
 
-  create(title: string, description: string): Observable<void> {
+  create(title: string, description: string, selectedImage: File): Observable<Post> {
+    let cPost: Post;
+
     return this.authService.authState.pipe(
       switchMap(authState => {
         return this.http.post(`${this.mBaseUrl}`, {
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      title: title,
-      description: description,
-      user: {
-        username: authState.username
-      }
-    });
-  }),
-      map(res => {
-        console.log(res);
+          title: title,
+          description: description,
+        }, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
+      }),
+      switchMap(res => {
+        cPost = new Post(res);
+        return this.authService.authState;
+      }),
+      switchMap(authState => {
+
+        const formData: FormData = new FormData();
+        formData.append('file', selectedImage);
+
+        return this.http.post(`${environment.apiUrl}/storage/${cPost.id}`, formData, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          },
+          responseType: 'text'
+        });
+      }),
+      map(() => {
+        return cPost;
       })
     );
   }
 
-  update(post: Post, title: string, description: string): Observable<void> {
+  update(postId: number, title: string, description: string, selectedImage: File): Observable<void> {
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.put(`${this.mBaseUrl}/${postId}`, { title, description }, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
+      }),
+      switchMap(() => {
+        return this.authService.authState;
+      }),
+      switchMap(authState => {
+        const formData: FormData = new FormData();
+        formData.append('file', selectedImage);
 
-    return this.http.put(`${this.mBaseUrl}/${post.id}`, {
-      ...post,
-      title,
-      description,
-      updatedAt: new Date()
-    }).pipe(
+        return this.http.post(`${environment.apiUrl}/storage/${postId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          },
+          responseType: 'text'
+        });
+      }),
       map(() => {})
     );
   }
 
   delete(postId: number): Observable<void> {
-    return this.http.delete(`${this.mBaseUrl}/${postId}`).pipe(
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.delete(`${this.mBaseUrl}/${postId}`, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
+      }),
       map(() => {})
-    )
+    );
   }
 
   fetchAllCommentsById(postId: number): Observable<void> {
@@ -114,25 +154,33 @@ export class PostService {
     );
   }
 
-  // editComment(post: Post, commentIndex: number, text: string): Observable<void> {
-  //   post.comments[commentIndex].text = text;
+  editComment(postId: number, commentId: number, text: string): Observable<void> {
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.put(`${this.mBaseUrl}/${postId}/comments/${commentId}`, { text }, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        })
+      }),
+      switchMap(() => {
+        return this.fetchAllCommentsById(postId)
+      })
+    )
+  }
 
-  //   const postToSend = { ...post };
-  //   postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
-
-  //   return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
-  //     map(() => {})
-  //   )
-  // }
-
-  // deleteComment(post: Post, commentIndex: number): Observable<void> {
-  //   post.comments = post.comments.filter((_, i) => i !== commentIndex);
-
-  //   const postToSend = { ...post };
-  //   postToSend.description = post.description.replace(/<p>|<\/p>/g, '');
-
-  //   return this.http.put(`${this.mBaseUrl}/${post.id}`, postToSend).pipe(
-  //     map(() => {})
-  //   )
-  // }
+  deleteComment(postId: number, commentId: number): Observable<void> {
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.delete(`${this.mBaseUrl}/${postId}/comments/${commentId}`, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
+      }),
+      switchMap(() => {
+        return this.fetchAllCommentsById(postId)
+      })
+    );
+  }
 }

@@ -3,11 +3,12 @@ import { environment } from "../../main";
 import { BehaviorSubject, map, Observable, switchMap, take } from "rxjs";
 import { User } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
+import { AuthService } from "./auth.service";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  private mBaseUrl = `${environment.apiUrl}/auth`;
+  private mBaseUrl = `${environment.apiUrl}/users`;
   private mUsers = new BehaviorSubject<User[]>([]);
 
   get users(): Observable<User[]> {
@@ -15,11 +16,19 @@ export class UserService {
   }
 
   constructor(
+    private authService: AuthService,
     private http: HttpClient
   ) { }
 
   fetchAll() {
-    return this.http.get<any[]>(`${this.mBaseUrl}`).pipe(
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.get<any[]>(`${this.mBaseUrl}`, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
+      }),
       map(res => {
         const users = res.map(item => new User(item));
 
@@ -29,24 +38,15 @@ export class UserService {
   }
 
   setIsAdmin(userId: number, isAdmin: boolean): Observable<void> {
-    let cUsers: User[];
-
-    return this.users.pipe(
-      take(1),
-      switchMap(users => {
-        cUsers = users;
-        const userToUpdateIndex = users.findIndex(user => user.id === userId);
-
-        if (userToUpdateIndex > -1) {
-          cUsers[userToUpdateIndex].role = isAdmin ? 'admin' : 'standard';
-
-        }
-
-        return this.http.put(`${this.mBaseUrl}/${userId}`, cUsers[userToUpdateIndex]);
+    return this.authService.authState.pipe(
+      switchMap(authState => {
+        return this.http.patch(`${this.mBaseUrl}/${userId}`, { isAdmin }, {
+          headers: {
+            Authorization: `Bearer ${authState.token}`
+          }
+        });
       }),
-      map(() => {
-        this.mUsers.next(cUsers);
-      })
+      switchMap(() => this.fetchAll())
     )
   }
 }

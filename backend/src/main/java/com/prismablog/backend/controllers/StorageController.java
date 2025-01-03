@@ -41,8 +41,8 @@ public class StorageController {
     .body(imageData);
   }
 
-  @PostMapping
-  public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) throws IOException {
+  @PostMapping("/{imageName}")
+  public ResponseEntity<?> upload(@PathVariable String imageName, @RequestParam("file") MultipartFile file) throws IOException {
 
     if (!file.getContentType().equals("image/png")) {
       return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body("PNG Format required");
@@ -52,7 +52,7 @@ public class StorageController {
 
     byte[] bytes = file.getBytes();
 
-    Path path = Paths.get(staticDir + file.getOriginalFilename());
+    Path path = Paths.get(staticDir + imageName + ".png");
     Files.write(path, bytes);
 
     return ResponseEntity.status(200).body("Success");

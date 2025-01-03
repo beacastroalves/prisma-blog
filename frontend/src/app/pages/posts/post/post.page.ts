@@ -92,21 +92,20 @@ export class PostPage implements OnInit, OnDestroy {
     });
   }
 
-  editComment(commentIndex: number) {
-    const newComment = prompt('Edite seu comentário', this.postComments[commentIndex].text);
+  editComment(comment: PostComment) {
+    const newComment = prompt('Edite seu comentário', comment.text);
     console.log(newComment);
 
     if (newComment.length > 10) {
-      // this.postService.editComment(this.post, commentIndex, newComment).subscribe();
+      this.postService.editComment(this.post.id, comment.id, newComment).subscribe();
     } else {
       alert('Mínimo 10 caracteres para comentários')
     }
   }
 
-  deleteComment(commentIndex: number) {
-    const comment = this.postComments[commentIndex];
+  deleteComment(comment: PostComment) {
     if (confirm(`Tem certeza que deseja remover o comentário: "${comment.text}" de ${comment.username}?`)) {
-      // this.postService.deleteComment(this.post, commentIndex).subscribe();
+      this.postService.deleteComment(this.post.id, comment.id).subscribe();
     }
   }
 }

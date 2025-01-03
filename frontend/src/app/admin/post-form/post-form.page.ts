@@ -14,6 +14,7 @@ export class PostFormPage implements OnInit {
   form: FormGroup;
   postToEdit: Post;
   editMode = false;
+  selectedImage: File;
 
   constructor (
     private postService: PostService,
@@ -42,6 +43,10 @@ export class PostFormPage implements OnInit {
 
   initForm(post?: Post) {
     this.form = new FormGroup ({
+      imageUrl: new FormControl(null, {
+        updateOn: 'change',
+        validators: [Validators.required]
+      }),
       title: new FormControl(post ? post.title : null, {
         updateOn: 'change',
         validators: [Validators.required, Validators.minLength(10)]
@@ -61,6 +66,10 @@ export class PostFormPage implements OnInit {
     return this.form.controls[control].errors;
   }
 
+  onFileChanged(event: Event) {
+    this.selectedImage = (event.target as HTMLInputElement).files[0];
+  }
+
   submit() {
     if (this.form.invalid) {
       return;
@@ -69,12 +78,14 @@ export class PostFormPage implements OnInit {
     const { title, description } = this.form.value;
 
     if (this.editMode) {
-      this.postService.update(this.postToEdit, title, description).subscribe(() => {
+      this.postService.update(this.postToEdit.id, title, description, this.selectedImage).subscribe(() => {
         this.router.navigate(['/posts', this.postToEdit.id]);
       });
     } else {
-      this.postService.create(title, description).subscribe(() => {
-        this.form.reset();
+      this.postService.create(title, description, this.selectedImage).subscribe(post => {
+        setTimeout(() => {
+          this.router.navigate(['/posts',post.id]);
+        }, 1000)
       });
     }
   }
